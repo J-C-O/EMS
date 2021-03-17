@@ -1,0 +1,5 @@
+- name: Artikel
+  href: articles/
+- name: EMS-Klassendokumentation
+  href: api/
+  homepage: api/index.md

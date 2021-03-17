@@ -1,0 +1,4 @@
+- name: Artikel
+  href: ../articles/toc.yml
+- name: EMS-Klassendokumentation
+  href: ../api/toc.yml
