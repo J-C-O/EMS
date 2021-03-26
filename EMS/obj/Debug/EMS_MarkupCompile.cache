@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\
+C:\Users\jlth\Source\Repos\J-C-O\EMS\EMS\obj\Debug\
 EMS
 none
 false
 DEBUG;TRACE
-C:\Users\Julius\source\repos\EMS\EMS\App.xaml
-11151548125
+C:\Users\jlth\Source\Repos\J-C-O\EMS\EMS\App.xaml
+3-619026873
 
-15-778244370
+19-1311892913
 13-1505183044
-MainWindow.xaml;
+MainWindow.xaml;Views\EditTreeView.xaml;Views\ManageTreeView.xaml;
 
 False
 
