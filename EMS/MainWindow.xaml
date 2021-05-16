@@ -4,24 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EMS"
+        xmlns:views="clr-namespace:EMS.Views"
+        xmlns:viewmodels="clr-namespace:EMS.ViewModels"
         mc:Ignorable="d"
         Title="EMS" Height="450" Width="1100.773">
+
+    <Window.Resources>
+        <DataTemplate x:Name="ManageTreeTemplate" DataType="{x:Type viewmodels:ManageTreeViewModel}">
+            <views:ManageTreeView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="EditTreeTemplate" DataType="{x:Type viewmodels:EditTreeViewModel}">
+            <views:EditTreeView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="EditorTemplate" DataType="{x:Type viewmodels:EditorViewModel}">
+            <views:EditorView DataContext="{Binding}"/>
+        </DataTemplate>
+        
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="208*"/>
-            <ColumnDefinition Width="885*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="248*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="10,184,0,10" Grid.ColumnSpan="2">
-            <TextBlock x:Name="tbOutPut" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Konfigurationen:" VerticalAlignment="Top" Height="Auto" Width="Auto" Grid.ColumnSpan="2"/>
-        </ScrollViewer>
-
-        <Button x:Name="buttonBuild" Content="Initialize" HorizontalAlignment="Left" Margin="74,59,0,0" VerticalAlignment="Top" Width="75" Click="buttonInitialize_Click"/>
-        <Button x:Name="buttonGetNext" Content="Next" HorizontalAlignment="Left" Margin="120.473,59,0,0" VerticalAlignment="Top" Width="75" Click="buttonGetNext_Click" Grid.Column="1"/>
-        <Button x:Name="buttonReflect" Content="Save" HorizontalAlignment="Left" Margin="74,100,0,0" VerticalAlignment="Top" Width="75" Click="buttonSave_Click"/>
-        <Button x:Name="buttonLoad" Content="Load" HorizontalAlignment="Left" Margin="74,140,0,0" VerticalAlignment="Top" Width="75" Click="buttonLoad_Click"/>
-        <TextBox x:Name="textBoxSave" HorizontalAlignment="Left" Height="23" Margin="200,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="textBoxLoad" HorizontalAlignment="Left" Height="23" Margin="200,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonPrint" Content="Print" HorizontalAlignment="Left" Margin="200,59,0,0" VerticalAlignment="Top" Width="75" Click="buttonPrint_Click" Grid.ColumnSpan="2"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Background="#FFB0BCB0" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5">
+            <StackPanel HorizontalAlignment="Left">
+                <Button Width="100" Height="50" x:Name="button_ManageTree" Content="Manage Tree" Click="button_ManageTree_Click"/>
+                <Button Width="100" Height="50" x:Name="button_EditTree" Content="Edit Tree" Click="button_EditTree_Click"/>
+                <Button Width="100" Height="50" x:Name="button_Close" Content="Close" VerticalAlignment="Bottom" Click="button_Close_Click"/>
+            </StackPanel>
+        </DockPanel>
+        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+        <ContentControl Content="{Binding}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>

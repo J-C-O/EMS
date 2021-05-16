@@ -1,0 +1,26 @@
+﻿<Window x:Class="EMS.Dialog.NewLeafNodeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EMS.Dialog"
+        mc:Ignorable="d"
+        Title="NewLeafNodeDialog" Height="225" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Node name:" />
+            <Label />
+            <TextBox x:Name="tb_nodeName" Width="250" HorizontalAlignment="Left"/>
+            <Label/>
+            <TextBlock Text="Value:" />
+            <Label />
+            <TextBox x:Name="tb_value" Width="250" HorizontalAlignment="Left" />
+            <Label />
+            <Button Content="Add value" Click="AddValue_Click" />
+            <Label />
+            <TextBlock x:Name="outputBlock" Text="Values = " />
+            <Label />
+            <Button Content="OK" Click="OKButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

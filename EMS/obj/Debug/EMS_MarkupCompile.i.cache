@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Julius\source\repos\EMS\EMS\App.xaml
-11151548125
+14-1709537128
 
-16-1620603737
-13-1505183044
-MainWindow.xaml;
+31-636487026
+17-785931069
+Dialog\NewAlternative.xaml;Dialog\NewContinuous.xaml;Dialog\NewDiscrete.xaml;Dialog\NewLeafNodeDialog.xaml;Dialog\NewNodeDialog.xaml;Dialog\NewParallel.xaml;Dialog\NewSubGraphDialog.xaml;Editor\GraphToolBox.xaml;Editor\Toolbox.xaml;MainWindow.xaml;Themes\Generic.xaml;Views\EditorView.xaml;Views\EditTreeView.xaml;Views\ManageTreeView.xaml;
 
-True
+False
 
