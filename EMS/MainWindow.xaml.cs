@@ -12,6 +12,7 @@ namespace EMS
 
         ManageTreeViewModel manageView;
         EditTreeViewModel editView;
+        EditorViewModel editor;
 
         /// <summary>
         /// Konstruktor der Klasse.
@@ -25,6 +26,7 @@ namespace EMS
             //Views initialisieren
             editView = new EditTreeViewModel();
             manageView = new ManageTreeViewModel();
+            editor = new EditorViewModel();
         }
 
         
@@ -45,7 +47,7 @@ namespace EMS
         /// <param name="e"></param>
         private void button_EditTree_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = editView;
+            DataContext = editor;
         }
 
         /// <summary>

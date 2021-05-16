@@ -4,9 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EMS.Views"
+             xmlns:toolbox="clr-namespace:EMS.Editor"
+             Loaded="EditTreeView_Loaded"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightGray">
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="281*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Add Node" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Name:" Width="50"/>
+                    <TextBox x:Name="tb_Name" Width="350" Height="25"/>
+                    <Label Content="Parallel:"/>
+                    <CheckBox x:Name="cb_parallel" Margin="5"/>
+                    <Button x:Name="button_Add" Content="Add" Width="50" Click="button_Add_Click"/>
+                    <Button x:Name="button_SubGraph" Content="Sub-Graph" Width="70" Click="button_SubGraph_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Root:" Width="50"/>
+                    <TextBox x:Name="tb_RootName" Width="350" Height="25"/>
+                    <Label Content="Child:" Width="50"/>
+                    <TextBox x:Name="tb_ChildName" Width="350" Height="25"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button x:Name="button_Connect" Content="Add Edge" Click="button_Connect_Click" Height="25"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <DockPanel Background="AntiqueWhite" x:Name="graphViewerPanel" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
+        <toolbox:GraphToolBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" />
+        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+
     </Grid>
 </UserControl>

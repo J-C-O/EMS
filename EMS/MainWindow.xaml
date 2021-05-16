@@ -8,6 +8,7 @@
         xmlns:viewmodels="clr-namespace:EMS.ViewModels"
         mc:Ignorable="d"
         Title="EMS" Height="450" Width="1100.773">
+
     <Window.Resources>
         <DataTemplate x:Name="ManageTreeTemplate" DataType="{x:Type viewmodels:ManageTreeViewModel}">
             <views:ManageTreeView DataContext="{Binding}"/>
@@ -15,14 +16,20 @@
         <DataTemplate x:Name="EditTreeTemplate" DataType="{x:Type viewmodels:EditTreeViewModel}">
             <views:EditTreeView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="EditorTemplate" DataType="{x:Type viewmodels:EditorViewModel}">
+            <views:EditorView DataContext="{Binding}"/>
+        </DataTemplate>
+        
     </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="248*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -33,11 +40,12 @@
         </Grid.RowDefinitions>
         <DockPanel Background="#FFB0BCB0" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5">
             <StackPanel HorizontalAlignment="Left">
-                <Button Width="100" Height="50" x:Name="button_ManageTree" Content="Manage Tree" Click="button_ManageTree_Click"></Button>
-                <Button Width="100" Height="50" x:Name="button_EditTree" Content="Edit Tree" Click="button_EditTree_Click"></Button>
+                <Button Width="100" Height="50" x:Name="button_ManageTree" Content="Manage Tree" Click="button_ManageTree_Click"/>
+                <Button Width="100" Height="50" x:Name="button_EditTree" Content="Edit Tree" Click="button_EditTree_Click"/>
                 <Button Width="100" Height="50" x:Name="button_Close" Content="Close" VerticalAlignment="Bottom" Click="button_Close_Click"/>
             </StackPanel>
         </DockPanel>
-        <ContentControl Content="{Binding}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
+        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+        <ContentControl Content="{Binding}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>

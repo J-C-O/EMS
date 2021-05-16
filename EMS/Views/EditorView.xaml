@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="EMS.Views.EditorView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EMS.Views"
+      xmlns:toolbox="clr-namespace:EMS.Editor"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      >
+
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="281*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" AllowDrop="True" Drop="Target_Drop"/>
+        
+        <toolbox:Toolbox Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" />
+        
+        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+
+    </Grid>
+</UserControl>
