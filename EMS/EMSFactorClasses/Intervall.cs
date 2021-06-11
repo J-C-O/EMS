@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Beschreibt ein Objekt, welches einen kontinuierlichen Wertebereich über ein Intervall abbildet.
@@ -42,6 +42,8 @@ namespace EMSFactorClasses
             Increment = (decimal)iv;
             OutVal = sv.ToString();
             tmp = (decimal)sv;
+
+            Composite = false;
         }
 
         /// <summary>
@@ -50,6 +52,8 @@ namespace EMSFactorClasses
         /// </summary>
         public Intervall()
         {
+            Name = "Discrete";
+            Composite = false;
         }
 
         /// <summary>

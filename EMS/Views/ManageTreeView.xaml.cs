@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using EMSFactorClient;
 using Microsoft.Win32;
+using EMS.Backend;
 
 namespace EMS.Views
 {
@@ -40,6 +41,11 @@ namespace EMS.Views
             saveFile.FileName = "config_" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
         }
 
+        private void SetTestTree_Click(object sender, RoutedEventArgs e)
+        {
+            client.SetTestTree();
+        }
+
         /// <summary>
         /// Lädt eine Faktorbaumkonfiguration.
         /// Hierfür wird ein Dialogfenster geöffnet.
@@ -55,6 +61,8 @@ namespace EMS.Views
 
                 tb_Load.Text = loadPath;
                 client.LoadConfig(loadPath);
+                EmsMsaglLinker.LoadTreeConfig(loadPath);
+                tbOutPut.Text = EmsMsaglLinker.StatusMessage;
             }
         }
 
@@ -71,7 +79,9 @@ namespace EMS.Views
 
             savePath = saveFile.FileName;
             tb_Save.Text = savePath;
-            client.WriteConfig(savePath);
+            //client.WriteConfig(savePath);
+            EmsMsaglLinker.SaveTreeConfig(savePath);
+            tbOutPut.Text = EmsMsaglLinker.StatusMessage;
         }
 
         /// <summary>
@@ -81,7 +91,9 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Initialize_Click(object sender, RoutedEventArgs e)
         {
-            client.Initialize();
+            //client.Initialize();
+            EmsMsaglLinker.InitializeTree();
+            tbOutPut.Text = EmsMsaglLinker.PrintTree();
         }
 
         /// <summary>
@@ -91,7 +103,8 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Print_Click(object sender, RoutedEventArgs e)
         {
-            client.PrintTreeGUI();
+            //client.PrintTreeGUI();
+            tbOutPut.Text = EmsMsaglLinker.PrintTree();
         }
 
         /// <summary>
@@ -101,7 +114,9 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Next_Click(object sender, RoutedEventArgs e)
         {
-            client.Next();
+            //client.Next();
+            EmsMsaglLinker.NextFactor();
+            tbOutPut.Text = EmsMsaglLinker.StatusMessage;
         }
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Factor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="FactorComplex" IsActive="true" FactorName="root">
+  <Composite>false</Composite>
+  <Sub-Factors>
+    <Factor xsi:type="ArrayValueOfString" IsActive="true" FactorName="discrete" FactorValue="3">
+      <Composite>false</Composite>
+      <ParentNode>root</ParentNode>
+      <Values>
+        <string>1</string>
+        <string>2</string>
+        <string>3</string>
+      </Values>
+      <ValIDX>2</ValIDX>
+    </Factor>
+  </Sub-Factors>
+  <FactorIDX>0</FactorIDX>
+</Factor>

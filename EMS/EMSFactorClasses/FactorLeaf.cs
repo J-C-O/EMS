@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Basisklasse für atomare Faktoren.
@@ -63,5 +63,6 @@ namespace EMSFactorClasses
         {
             throw new NotImplementedException();
         }
+
     }
 }

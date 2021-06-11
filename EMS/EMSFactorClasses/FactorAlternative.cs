@@ -1,4 +1,4 @@
-﻿namespace EMSFactorClasses
+﻿namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Mit dieser Klasse werden alternative Faktoren beschrieben.
@@ -13,6 +13,7 @@
         public FactorAlternative(string name)
         {
             Name = name;
+            Composite = true;
         }
 
         /// <summary>
@@ -21,7 +22,8 @@
         /// </summary>
         public FactorAlternative()
         {
-            
+            Name = "Alternative";
+            Composite = true;
         }
 
         /// <summary>

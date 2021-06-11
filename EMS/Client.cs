@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Controls;
 using System.Xml.Serialization;
-using EMSFactorClasses;
+using EMS.EMSFactorClasses;
 
 namespace EMSFactorClient
 {
@@ -33,7 +33,7 @@ namespace EMSFactorClient
         /// </summary>
         public Client()
         {
-
+            //tree.Name = "[ROOT]";
         }
 
         /// <summary>
@@ -118,6 +118,25 @@ namespace EMSFactorClient
             {
                 rootNode.AddNode(nextNode);
             }
+        }
+
+        public void SetTestTree()
+        {
+            EMS._00Helper.FactorTree test = new EMS._00Helper.FactorTree();
+            tree = test.Tree;
+
+            StateBox.Text += "\nTestbaum eingelesen";
+            StateBox.Text += "\nTestbaum AUSGABE [1]:";
+            StateBox.Text += "\n" + tree.PrintNodes();
+
+            StateBox.Text += "\n Füge [Parallel 1.1.2] an Parallel 1.2";
+            tree.AddNodeByParentName("Parallel 1.2", new FactorParallel("Parallel 1.1.2"));
+            StateBox.Text += "\nTestbaum AUSGABE [2]:";
+            StateBox.Text += "\n" + tree.PrintNodes();
+
+            StateBox.Text += "\n Füge [Parallel 1.2.2] an [Parallel 1.1.2]";
+            tree.AddNodeByParentName("Parallel 1.1.2", new FactorParallel("Parallel 1.2.2"));
+            StateBox.Text += "\n" + tree.PrintNodes();
         }
 
     }

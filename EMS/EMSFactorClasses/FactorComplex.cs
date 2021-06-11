@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 
 {
     /// <summary>
@@ -26,16 +26,51 @@ namespace EMSFactorClasses
         /// </summary>
         public int FactorIDX { get; set; }
 
+        
+
         /// <summary>
         /// Fügt der Liste nodes ein Objekt vom Typ Factor hinzu.
         /// </summary>
         /// <param name="factor">Objekt vom Typ Factor, welches hinzugefügt werden soll.</param>
         public override void AddNode(Factor factor)
         {
+            factor.ParentNode = this.Name;
             this.nodes.Add(factor);
+
+            //hinzugefügten Knoten suchen und ParentNode auf this.Name setzen.
+            //this.nodes.Find(x => x.Name == factor.Name).ParentNode = this.Name;
             // FactorIDX muss hier gesetzt werden, da hier entschieden wird wie viele Elemente this.nodes hat.
             FactorIDX = this.nodes.Count - 1;
         }
+
+        /// <summary>
+        /// Fügt einen Knoten an einer bestimmten Stelle hinzu.
+        /// </summary>
+        /// <param name="parent">Elternknoten, hier wird der Knoten angehangen</param>
+        /// <param name="child">Kindknoten, der an den Elternknoten angehangen wird.</param>
+        public override void AddNodeByParentName(string parent, Factor child)
+        {
+            if(string.Equals(this.Name, parent))
+            {
+                this.AddNode(child);
+            } else
+            {
+                foreach (Factor factor in nodes)
+                {
+                    if (string.Equals(factor.Name, parent))
+                    {
+                        factor.AddNode(child);
+                    }
+                    else
+                    {
+                        factor.AddNodeByParentName(parent, child);
+                    }
+                }
+            }
+            
+        }
+
+        
 
         /// <summary>
         /// Entfernt ein Objekt vom Typ Faktor aus der Liste nodes.
@@ -68,7 +103,33 @@ namespace EMSFactorClasses
             return result + ")";
         }
 
-        
+        public override void SetNames(List<string> nodeNames)
+        {
+            base.SetNames(nodeNames);
+            foreach(Factor factor in nodes)
+            {
+                factor.SetNames(nodeNames);
+            }
+        }
+
+        public override Factor GetNodeByName(string nodeName)
+        {
+
+            if (this.CheckNodeName(nodeName))
+            {
+                return this;
+            }
+
+            for (int i = 0; i < this.nodes.Count; i++)
+            {
+                if (this.nodes[i].GetNodeByName(nodeName) != null)
+                {
+                    return this.nodes[i].GetNodeByName(nodeName);
+                }
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Initialisiert alle Elemente in nodes.
@@ -175,5 +236,7 @@ namespace EMSFactorClasses
                 factor.IsActive = true;
             }
         }
+
+        
     }
 }

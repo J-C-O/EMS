@@ -10,12 +10,11 @@
         Title="EMS" Height="450" Width="1100.773">
 
     <Window.Resources>
+        
         <DataTemplate x:Name="ManageTreeTemplate" DataType="{x:Type viewmodels:ManageTreeViewModel}">
             <views:ManageTreeView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="EditTreeTemplate" DataType="{x:Type viewmodels:EditTreeViewModel}">
-            <views:EditTreeView DataContext="{Binding}"/>
-        </DataTemplate>
+
         <DataTemplate x:Name="EditorTemplate" DataType="{x:Type viewmodels:EditorViewModel}">
             <views:EditorView DataContext="{Binding}"/>
         </DataTemplate>
@@ -43,6 +42,7 @@
                 <Button Width="100" Height="50" x:Name="button_ManageTree" Content="Manage Tree" Click="button_ManageTree_Click"/>
                 <Button Width="100" Height="50" x:Name="button_EditTree" Content="Edit Tree" Click="button_EditTree_Click"/>
                 <Button Width="100" Height="50" x:Name="button_Close" Content="Close" VerticalAlignment="Bottom" Click="button_Close_Click"/>
+                <Button Width="100" Height="50" Name="button_testMAIN" Content="TEST" Click="button_testMAIN_Click" />
             </StackPanel>
         </DockPanel>
         <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />

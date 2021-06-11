@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Beschreibt ein Objekt welches Werte aus einem diskrete Werte in einem Array vom Typ T hält.
@@ -33,6 +33,8 @@ namespace EMSFactorClasses
             Name = name;
             Values = vals;
             OutVal = ValToString(0);
+
+            Composite = false;
         }
 
         /// <summary>
@@ -41,7 +43,8 @@ namespace EMSFactorClasses
         /// </summary>
         public ArrayValue()
         {
-            
+            Name = "Discrete";
+            Composite = false;
         }
 
         /// <summary>

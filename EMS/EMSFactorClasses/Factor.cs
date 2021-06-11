@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Abstrakte Oberklasse, von der alle Faktorklassen geerbt haben.
@@ -25,6 +25,15 @@ namespace EMSFactorClasses
         [XmlAttribute]
         public bool IsActive = true;
 
+        public  bool Composite { get; set; }
+
+        /// <summary>
+        /// Eigenschaft mit dem Namen des Elternknotens
+        /// </summary>
+        public string ParentNode { get; set; }
+
+        protected List<string> names = new List<string>();
+
         /// <summary>
         /// Fügt ein Objekt vom Typ Factor einer Liste hinzu. 
         /// </summary>
@@ -32,6 +41,43 @@ namespace EMSFactorClasses
         public virtual void AddNode(Factor factor)
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="child"></param>
+        public virtual void AddNodeByParentName(string parent, Factor child)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Gibt true zurück, wenn der Name des aufrufenden Knotens mit dem gesuchten übereinstimmt.
+        /// </summary>
+        /// <param name="nodeName">Name des gesuchten Knotens</param>
+        /// <returns></returns>
+        public virtual bool CheckNodeName(string nodeName)
+        {
+            if (string.Equals(this.Name, nodeName))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        public virtual Factor GetNodeByName(string nodeName)
+        {
+            if (CheckNodeName(nodeName))
+            {
+                return this;
+            } else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -79,6 +125,15 @@ namespace EMSFactorClasses
         /// Initialisiert ein Factor-Object.
         /// </summary>
         public abstract void SetInitVal();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public virtual void SetNames(List<string> nodeNames)
+        {
+            nodeNames.Add(Name);
+        }
 
         /// <summary>
         /// Schaltet ein Factor-Ojekt auf seine nächste Wertausprägung.

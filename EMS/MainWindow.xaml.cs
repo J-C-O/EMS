@@ -11,8 +11,8 @@ namespace EMS
         
 
         ManageTreeViewModel manageView;
-        EditTreeViewModel editView;
         EditorViewModel editor;
+
 
         /// <summary>
         /// Konstruktor der Klasse.
@@ -21,12 +21,14 @@ namespace EMS
         {
             InitializeComponent();
 
-            
+
 
             //Views initialisieren
-            editView = new EditTreeViewModel();
             manageView = new ManageTreeViewModel();
             editor = new EditorViewModel();
+
+            DataContext = editor;
+
         }
 
         
@@ -47,7 +49,9 @@ namespace EMS
         /// <param name="e"></param>
         private void button_EditTree_Click(object sender, RoutedEventArgs e)
         {
+            Backend.EmsMsaglLinker.SetTreeGraph();
             DataContext = editor;
+            
         }
 
         /// <summary>
@@ -58,6 +62,11 @@ namespace EMS
         private void button_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void button_testMAIN_Click(object sender, RoutedEventArgs e)
+        {
+            //Backend.EmsMsaglLinker.SetTreeGraph();
         }
     }
 }

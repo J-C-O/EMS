@@ -20,6 +20,7 @@
                 <Button Width="50" x:Name="button_Initialize" Content="Initialize" Click="button_Initialize_Click"></Button>
                 <Button Width="50" x:Name="button_Print" Content="Print" Click="button_Print_Click"></Button>
                 <Button Width="50" x:Name="button_Next" Content="Next" Click="button_Next_Click"></Button>
+                <Button Width="50" x:Name="button_Test" Content="TEST" Click="SetTestTree_Click" />
                 <ScrollViewer VerticalContentAlignment="Bottom" Height="250" Width="968" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <TextBlock x:Name="tbOutPut" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Configurations:" VerticalAlignment="Top" Height="Auto" Width="Auto" Grid.ColumnSpan="2"/>
                 </ScrollViewer>

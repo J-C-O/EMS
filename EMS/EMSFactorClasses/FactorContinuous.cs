@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace EMSFactorClasses
+namespace EMS.EMSFactorClasses
 {
     /// <summary>
     /// Basisklasse für kontinuierliche atomare Faktoren.
