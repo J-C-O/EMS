@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="EMS.BackendClass">
+    <Position X="3.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAECAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BackendClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.Backend.EmsMsaglLinker">
+    <Position X="6.75" Y="1.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAAAEKAAAAAQgAAAACIQAAAAAgBAEAAgJQAAAA=</HashCode>
+      <FileName>Backend\EmsMsaglLinker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,6 +8,9 @@ using Microsoft.Msagl.Drawing;
 using Microsoft.Msagl.WpfGraphControl;
 
 using EMS.Backend;
+using System.Collections.Generic;
+using System.Collections;
+using EMS.Dialog;
 
 namespace EMS.Views
 {
@@ -19,14 +22,11 @@ namespace EMS.Views
         private Graph masterGraph = new Graph();
         GraphViewer masterViewer = new GraphViewer();
 
-        //Backend.EmsMsaglLinker linkGraph = (Backend.EmsMsaglLinker)Application.Current.TryFindResource("EMSLinker");
+        // NICHT MEHR VERWENDET
+        //private string[] nodeNames = new string[2];
+        //private int nameIndex = 0;
 
-        private Graph undoGraph = new Graph();
-
-        private string[] nodeNames = new string[2];
-        private int nameIndex = 0;
-
-        private IViewerNode rightclickedNode;
+        private IViewerNode _rClickedNode;
 
         public EditorView()
         {
@@ -41,24 +41,48 @@ namespace EMS.Views
         }
 
         /// <summary>
-        /// Setzt undoGraph auf Zustand von masterViewer.Graph und 
-        /// masterViewer.Graph auf den Zustand von masterGraph
+        /// Setzt masterViewer.Graph auf den Zustand von EmsMsaglLinker.Graph
         /// </summary>
         private void SetGraph()
         {
-            undoGraph = masterViewer.Graph;
             masterViewer.Graph = EmsMsaglLinker.Graph;
-
             masterViewer.Graph.Directed = true;
+        }
+        /// <summary>
+        /// Setzt den Faktorbaum und seine grafische Darstellung zurück.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bttnResetGraph_Click(object sender, RoutedEventArgs e)
+        {
+            EmsMsaglLinker.ResetTree();
+            EmsMsaglLinker.ResetGraph();
 
+            SetGraph();
         }
 
+
+
+        /// <summary>
+        /// Initialisiert die Ansicht
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditorView_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetGraph();
+            statusTextBox.Text = "Left-Click = Move Node | Right-Click = Add Node";
+        }
+        /// <summary>
+        /// Eventhandler für das loslassen einer Maustaste, der statusTextBox initialisiert.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MasterViewer_MouseUp(object sender, MsaglMouseEventArgs e)
         {
             statusTextBox.Background = Brushes.Transparent;
-            statusTextBox.Text = "Left-Click = Move Node | Right-Click = Add Edge";
+            statusTextBox.Text = "Left-Click = Move Node | Right-Click = Add Node";
         }
-
         /// <summary>
         /// Eventhandler für Mausklicks.
         /// Unterschieden wird zwischen: 
@@ -81,10 +105,23 @@ namespace EMS.Views
             else
             {
                 var rootNode = masterViewer.ObjectUnderMouseCursor as IViewerNode;
-                rightclickedNode = rootNode;
+                _rClickedNode = rootNode;
+
+                EMSEditorContextMenu editorCMenu = new EMSEditorContextMenu();
+                editorCMenu.PlacementTarget = sender as DockPanel;
+
+                editorCMenu.AddParallel.Click += AddParallel_Click;
+                editorCMenu.AddAlternative.Click += AddAlternative_Click;
+
+                editorCMenu.AddDiscrete.Click += AddDiscrete_Click;
+                editorCMenu.AddContinuous.Click += AddContinuous_Click;
+
+                editorCMenu.EditValues.Click += EditLeafValue_Click;
+                editorCMenu.RemoveNode.Click += RemoveNode_Click;
+
                 if (rootNode != null)
                 {
-                    #region edge drwaing old
+                    #region OUTDATED Edge Drawing
                     //int rank = nameIndex + 1;
                     //var drawingRoot = (Node)rootNode.DrawingObject;
                     //nodeNames[nameIndex] = drawingRoot.Label.Text;
@@ -100,163 +137,28 @@ namespace EMS.Views
                     //    nameIndex = 0;
                     //}
                     #endregion
-
                     if (rootNode.DrawingObject.GetType() == typeof(ParallelNode) || rootNode.DrawingObject.GetType() == typeof(AlternativeNode))
                     {
-                        CMComposite menuComposite = new CMComposite();
-                        menuComposite.PlacementTarget = sender as DockPanel;
-
-                        menuComposite.AddParallel.Click += AddParallel_Click;
-                        menuComposite.AddAlternative.Click += AddAlternative_Click;
-                        menuComposite.AddDiscrete.Click += AddDiscrete_Click;
-                        menuComposite.AddContinuous.Click += AddContinuous_Click;
-                        menuComposite.RemoveNode.Click += RemoveNode_Click;
-
-
-                        menuComposite.Items.Add(menuComposite.AddParallel);
-                        menuComposite.Items.Add(menuComposite.AddAlternative);
-                        menuComposite.Items.Add(menuComposite.AddDiscrete);
-                        menuComposite.Items.Add(menuComposite.AddContinuous);
-                        menuComposite.Items.Add(menuComposite.RemoveNode);
-                        
-                        menuComposite.IsOpen = true;
+                        editorCMenu.SetComplexMenu();
+                        editorCMenu.IsOpen = true;
                     } else 
                     if (rootNode.DrawingObject.GetType() == typeof(DiscreteNode) || rootNode.DrawingObject.GetType() == typeof(ContinuousNode))
                     {
-                        CMComposite menuLeaf = new CMComposite();
-                        menuLeaf.PlacementTarget = sender as DockPanel;
-
-                        menuLeaf.RemoveNode.Click += RemoveNode_Click;
-                        menuLeaf.Items.Add(menuLeaf.RemoveNode);
-
-                        menuLeaf.IsOpen = true;
+                        editorCMenu.SetLeafMenu();
+                        editorCMenu.IsOpen = true;
                     }
 
                 } else
                 {
-                    CMComposite menuNon = new CMComposite();
-                    menuNon.PlacementTarget = sender as DockPanel;
-
-                    menuNon.AddParallel.Click += AddParallel_Click;
-                    menuNon.AddAlternative.Click += AddAlternative_Click;
-                    
-                    menuNon.Items.Add(menuNon.AddParallel);
-                    menuNon.Items.Add(menuNon.AddAlternative);
-
-                    menuNon.IsOpen = true;
+                    editorCMenu.SetInitMenu();
+                    editorCMenu.IsOpen = true;
                 }
             }
         }
 
-        private void RemoveNode_Click(object sender, RoutedEventArgs e)
-        {
-            if(rightclickedNode != null)
-            {
-                EmsMsaglLinker.RemoveFactor(rightclickedNode.Node.LabelText);
-                SetGraph();
-            }
-        }
 
-        /// <summary>
-        /// Fügt einen kontinuierlichen Knoten zum Graphen hinzu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddContinuous_Click(object sender, RoutedEventArgs e)
-        {
-            if (rightclickedNode != null)
-            {
-                var dialog = new Dialog.NewContinuous();
-                if (dialog.ShowDialog() == true)
-                {
-                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
-                    {
-                        statusTextBox.Text = "No cycles allowed";
-                    }
-                    else
-                    {
-                        EmsMsaglLinker.AddFactor_Continuous(
-                            rightclickedNode.Node.LabelText,
-                            dialog.ResponseText,
-                            new EMSFactorClasses.Intervall(dialog.ResponseText, dialog.StartValueNUM, dialog.EndValueNUM, dialog.IncrementNUM)
-                        );
-                        SetGraph();
-                    }
-                }
-            }
-        }
 
-        /// <summary>
-        /// Fügt einen diskreten Knoten zum Graphen hinzu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddDiscrete_Click(object sender, RoutedEventArgs e)
-        {
-            if (rightclickedNode != null)
-            {
-                var dialog = new Dialog.NewDiscrete();
-                if (dialog.ShowDialog() == true)
-                {
-                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
-                    {
-                        statusTextBox.Text = "No cycles allowed";
-                    }
-                    else
-                    {
-                        //masterGraph.AddNode(new DiscreteNode(dialog.ResponseText));
-                        //masterGraph.AddEdge(rightclickedNode.Node.LabelText, dialog.ResponseText);
-
-                        EmsMsaglLinker.AddFactor_Discrete(
-                            rightclickedNode.Node.LabelText, 
-                            dialog.ResponseText, 
-                            new EMSFactorClasses.ArrayValue<string>(dialog.ResponseText, dialog.Values)
-                        );
-                        SetGraph();
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Fügt einen alternativen Knoten zum Graphen hinzu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddAlternative_Click(object sender, RoutedEventArgs e)
-        {
-            if (rightclickedNode != null)
-            {
-                var dialog = new Dialog.NewAlternative();
-                if (dialog.ShowDialog() == true)
-                {
-                    if(masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
-                    {
-                        statusTextBox.Text = "No cycles allowed";
-                    } else
-                    {
-                        EmsMsaglLinker.AddFactor_Alternative(rightclickedNode.Node.LabelText, dialog.ResponseText);
-                        SetGraph();
-                    }                    
-                }
-            } else
-            {
-                var dialog = new Dialog.NewAlternative();
-                if (dialog.ShowDialog() == true)
-                {
-                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
-                    {
-                        statusTextBox.Text = "No cycles allowed";
-                    }
-                    else
-                    {
-                        EmsMsaglLinker.AddFactor_Alternative(dialog.ResponseText);
-                        SetGraph();
-                    }
-                }
-            }
-        }
-       
+        #region ADD NODES
         /// <summary>
         /// Fügt einen parallelen Knoten zum Graphen hinzu.
         /// </summary>
@@ -264,7 +166,7 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void AddParallel_Click(object sender, RoutedEventArgs e)
         {
-            if(rightclickedNode != null)
+            if (_rClickedNode != null)
             {
                 var dialog = new Dialog.NewParallel();
                 if (dialog.ShowDialog() == true)
@@ -275,11 +177,12 @@ namespace EMS.Views
                     }
                     else
                     {
-                        EmsMsaglLinker.AddFactor_Parallel(rightclickedNode.Node.LabelText, dialog.ResponseText);
+                        EmsMsaglLinker.AddFactor_Parallel(_rClickedNode.Node.LabelText, dialog.ResponseText);
                         SetGraph();
                     }
-                }   
-            } else
+                }
+            }
+            else
             {
                 var dialog = new Dialog.NewParallel();
                 if (dialog.ShowDialog() == true)
@@ -296,20 +199,175 @@ namespace EMS.Views
                 }
             }
         }
-
         /// <summary>
-        /// Initialisiert die Ansicht
+        /// Fügt einen alternativen Knoten zum Graphen hinzu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EditorView_Loaded(object sender, RoutedEventArgs e)
-        {            
-            SetGraph();
-            statusTextBox.Text = "Left-Click = Move Node | Right-Click = Add Edge";
+        private void AddAlternative_Click(object sender, RoutedEventArgs e)
+        {
+            if (_rClickedNode != null)
+            {
+                var dialog = new Dialog.NewAlternative();
+                if (dialog.ShowDialog() == true)
+                {
+                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
+                    {
+                        statusTextBox.Text = "No cycles allowed";
+                    }
+                    else
+                    {
+                        EmsMsaglLinker.AddFactor_Alternative(_rClickedNode.Node.LabelText, dialog.ResponseText);
+                        SetGraph();
+                    }
+                }
+            }
+            else
+            {
+                var dialog = new Dialog.NewAlternative();
+                if (dialog.ShowDialog() == true)
+                {
+                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
+                    {
+                        statusTextBox.Text = "No cycles allowed";
+                    }
+                    else
+                    {
+                        EmsMsaglLinker.AddFactor_Alternative(dialog.ResponseText);
+                        SetGraph();
+                    }
+                }
+            }
         }
 
         /// <summary>
-        /// Führt den "Drop"-Vorgang eines Drag&Drop Prozesses aus
+        /// Fügt einen diskreten Knoten zum Graphen hinzu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddDiscrete_Click(object sender, RoutedEventArgs e)
+        {
+            if (_rClickedNode != null)
+            {
+                var dialog = new EditValues();
+                if (dialog.ShowDialog() == true)
+                {
+                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
+                    {
+                        statusTextBox.Text = "No cycles allowed";
+                    }
+                    else
+                    {
+                        EmsMsaglLinker.AddFactor_Discrete(
+                            _rClickedNode.Node.LabelText,
+                            dialog.ResponseText,
+                            new EMSFactorClasses.ArrayValue<string>(dialog.ResponseText, dialog.ResultArray)
+                        );
+                        SetGraph();
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Fügt einen kontinuierlichen Knoten zum Graphen hinzu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddContinuous_Click(object sender, RoutedEventArgs e)
+        {
+            if (_rClickedNode != null)
+            {
+                //var dialog = new Dialog.NewContinuous();
+                var dialog = new EditIntervall();
+                if (dialog.ShowDialog() == true)
+                {
+                    if (masterViewer.Graph.NodeMap.ContainsKey(dialog.ResponseText))
+                    {
+                        statusTextBox.Text = "No cycles allowed";
+                    }
+                    else
+                    {
+                        EmsMsaglLinker.AddFactor_Continuous(
+                            _rClickedNode.Node.LabelText,
+                            dialog.ResponseText,
+                            //new EMSFactorClasses.Intervall(dialog.ResponseText, dialog.StartValueNUM, dialog.EndValueNUM, dialog.IncrementNUM)
+                            new EMSFactorClasses.Intervall(dialog.ResponseText, dialog.StartValue, dialog.EndValue, dialog.Increment)
+                        );
+                        SetGraph();
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region REMOVE/EDIT NODES
+        /// <summary>
+        /// Prüft den Typen des angeklickten Knotens und ruft ein entsprechendes Fenster zum editieren der Werte auf.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditLeafValue_Click(object sender, RoutedEventArgs e)
+        {
+            if (_rClickedNode != null)
+            {
+                Hashtable valuesHT = EmsMsaglLinker.GetLeafValues(_rClickedNode.Node.LabelText);
+                if (_rClickedNode.DrawingObject.GetType() == typeof(DiscreteNode))
+                {
+                    List<string> valuesLI = new List<string>();
+
+                    foreach (DictionaryEntry de in valuesHT)
+                    {
+                        if (!de.Key.Equals("ActiveValue"))
+                        {
+                            valuesLI.Add((string)de.Value);
+                        }
+                    }
+
+                    var discreteDialog = new Dialog.EditValues((string)valuesHT["ActiveValue"],valuesLI.ToArray(), _rClickedNode.Node.LabelText);
+
+                    if (discreteDialog.ShowDialog() == true)
+                    {
+                        EmsMsaglLinker.SetLeafValues(_rClickedNode.Node.LabelText, discreteDialog.ResultArray);
+                    }
+
+                } else if(_rClickedNode.DrawingObject.GetType() == typeof(ContinuousNode))
+                {
+                    var contDialog = new Dialog.EditIntervall((decimal)valuesHT["StartValue"],
+                                                              (decimal)valuesHT["EndValue"],
+                                                              (decimal)valuesHT["Increment"],
+                                                              (decimal)valuesHT["ActiveValue"],
+                                                              _rClickedNode.Node.LabelText);
+                    if(contDialog.ShowDialog() == true)
+                    {
+                        EmsMsaglLinker.SetLeafValues(_rClickedNode.Node.LabelText,
+                                                     contDialog.StartValue,
+                                                     contDialog.EndValue,
+                                                     contDialog.Increment);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Entfernt den angeklickten Knoten aus dem Faktorbaum und dessen grafischer Darstellung.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveNode_Click(object sender, RoutedEventArgs e)
+        {
+            if(_rClickedNode != null)
+            {
+                EmsMsaglLinker.RemoveFactor(_rClickedNode.Node.LabelText);
+                SetGraph();
+            }
+        }
+        #endregion
+
+
+
+        /// <summary>
+        /// [NICHT MEHR VERWENDET]
+        /// Führt den "Drop"-Vorgang eines Drag&Drop Prozesses aus.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -356,14 +414,6 @@ namespace EMS.Views
             }
 
 
-        }
-
-        private void bttnResetGraph_Click(object sender, RoutedEventArgs e)
-        {
-            EmsMsaglLinker.ResetTree();
-            EmsMsaglLinker.ResetGraph();
-
-            SetGraph();
         }
     }
 }

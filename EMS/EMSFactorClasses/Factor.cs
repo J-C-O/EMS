@@ -22,14 +22,19 @@ namespace EMS.EMSFactorClasses
         /// <summary>
         /// Eigenschaft die beschreibt ob ein Faktor aktiv ist.
         /// </summary>
-        [XmlAttribute]
+        [XmlAttribute(attributeName: "Active")]
         public bool IsActive = true;
 
+        /// <summary>
+        /// Beschreibt ob ein Faktor Subfaktoren hält.
+        /// </summary>
+        [XmlAttribute(attributeName: "Complex")]
         public  bool Composite { get; set; }
 
         /// <summary>
-        /// Eigenschaft mit dem Namen des Elternknotens
+        /// Eigenschaft mit dem Namen des Elternknotens.
         /// </summary>
+        [XmlAttribute(attributeName: "FactorGroup")]
         public string ParentNode { get; set; }
 
         protected List<string> names = new List<string>();
@@ -40,14 +45,10 @@ namespace EMS.EMSFactorClasses
         /// <param name="factor">Objekt vom Typ Factor welches einer Liste angehangen werden soll.</param>
         public virtual void AddNode(Factor factor)
         {
-            throw new System.NotImplementedException();
+            return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parent"></param>
-        /// <param name="child"></param>
+
         public virtual void AddNodeByParentName(string parent, Factor child)
         {
             return;
@@ -69,6 +70,11 @@ namespace EMS.EMSFactorClasses
             }
         }
 
+        /// <summary>
+        /// Gibt eine Selbstreferenz zurück, wenn der übergebene Wert mit this.Name übereinstimmt.
+        /// </summary>
+        /// <param name="nodeName"></param>
+        /// <returns></returns>
         public virtual Factor GetNodeByName(string nodeName)
         {
             if (CheckNodeName(nodeName))
@@ -127,10 +133,10 @@ namespace EMS.EMSFactorClasses
         public abstract void SetInitVal();
 
         /// <summary>
-        /// 
+        /// Fügt einer übergebenen Liste this.Name hinzu.
         /// </summary>
         /// <returns></returns>
-        public virtual void SetNames(List<string> nodeNames)
+        public virtual void GetNames(List<string> nodeNames)
         {
             nodeNames.Add(Name);
         }
@@ -142,19 +148,11 @@ namespace EMS.EMSFactorClasses
         /// <summary>
         /// Prüft ob ein Factor-Objekt weitere Werte annehmen kann.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>false</returns>
         public virtual bool HasNext()
         {
-            return true;
+            return false;
         }
 
-        /// <summary>
-        /// NOT USED
-        /// </summary>
-        /// <returns></returns>
-        public virtual string PrintConfig()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

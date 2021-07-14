@@ -34,11 +34,11 @@ namespace EMS.Dialog
             set { tb_increment.Text = value; }
         }
 
-        private static readonly Regex _regex = new Regex("[^-0-9.]+");
+        private static readonly Regex _regex = new Regex("[^-0-9,]+");
 
-        public double StartValueNUM { get; set; }
-        public double EndValueNUM { get; set; }
-        public double IncrementNUM { get; set; }
+        public decimal StartValueNUM { get; set; }
+        public decimal EndValueNUM { get; set; }
+        public decimal IncrementNUM { get; set; }
 
 
         private static bool IsTextAllowed(string text)
@@ -58,9 +58,9 @@ namespace EMS.Dialog
             }
             else
             {
-                StartValueNUM = double.Parse(ResponseStartValue);
-                EndValueNUM = double.Parse(ResponseEndValue);
-                IncrementNUM = double.Parse(ResponseIncrement);
+                StartValueNUM = decimal.Parse(ResponseStartValue);
+                EndValueNUM = decimal.Parse(ResponseEndValue);
+                IncrementNUM = decimal.Parse(ResponseIncrement);
 
                 DialogResult = true;
             }

@@ -16,6 +16,8 @@ namespace EMS.Dialog.EMSMenu
 
         public MenuItem RemoveNode { get; set; }
 
+        public MenuItem EditValues { get; set; }
+
         public CMComposite()
         {
             AddParallel = new MenuItem();
@@ -32,6 +34,9 @@ namespace EMS.Dialog.EMSMenu
 
             RemoveNode = new MenuItem();
             RemoveNode.Header = "Remove node";
+
+            EditValues = new MenuItem();
+            EditValues.Header = "Edit Values";
         }
     }
 }

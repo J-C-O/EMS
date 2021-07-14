@@ -65,29 +65,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="00Helper\FactorTree.cs" />
-    <Compile Include="Backend\EmsMsaglGlobals.cs" />
     <Compile Include="Backend\EmsMsaglLinker.cs" />
-    <Compile Include="Dialog\EMSMenu\CMComposite.cs" />
+    <Compile Include="Dialog\EditIntervall.xaml.cs">
+      <DependentUpon>EditIntervall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\EditValues.xaml.cs">
+      <DependentUpon>EditValues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\EMSEditorContextMenu.cs" />
     <Compile Include="Dialog\NewAlternative.xaml.cs">
       <DependentUpon>NewAlternative.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialog\NewContinuous.xaml.cs">
-      <DependentUpon>NewContinuous.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\NewDiscrete.xaml.cs">
-      <DependentUpon>NewDiscrete.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\NewLeafNodeDialog.xaml.cs">
-      <DependentUpon>NewLeafNodeDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\NewNodeDialog.xaml.cs">
-      <DependentUpon>NewNodeDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialog\NewParallel.xaml.cs">
       <DependentUpon>NewParallel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\NewSubGraphDialog.xaml.cs">
-      <DependentUpon>NewSubGraphDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\GraphToolBox.xaml.cs">
       <DependentUpon>GraphToolBox.xaml</DependentUpon>
@@ -110,33 +100,21 @@
     <Compile Include="Views\ManageTreeView.xaml.cs">
       <DependentUpon>ManageTreeView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialog\EditIntervall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\EditValues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialog\NewAlternative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialog\NewContinuous.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\NewDiscrete.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\NewLeafNodeDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dialog\NewNodeDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialog\NewParallel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\NewSubGraphDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Editor\GraphToolBox.xaml">
       <SubType>Designer</SubType>
@@ -199,7 +177,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagrams\FactorClasses.cd" />
+    <None Include="ClassDiagrams\EMS.Dialog.cd" />
+    <None Include="ClassDiagrams\EMS.Views.cd" />
+    <None Include="ClassDiagrams\Entwurf.cd" />
+    <None Include="ClassDiagrams\EMS.EMSFactorClasses.cd" />
     <None Include="ClassDiagrams\FactorNodeClasses.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -211,7 +192,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Dialog\EMSMenu\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

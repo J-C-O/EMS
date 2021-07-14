@@ -103,15 +103,24 @@ namespace EMS.EMSFactorClasses
             return result + ")";
         }
 
-        public override void SetNames(List<string> nodeNames)
+        /// <summary>
+        /// Ruft zuerst die Basismethode und danah die Methode SetNames() für alle Elemente in nodes auf.
+        /// </summary>
+        /// <param name="nodeNames">Liste die mit den Namen befüllt wird.</param>
+        public override void GetNames(List<string> nodeNames)
         {
-            base.SetNames(nodeNames);
+            base.GetNames(nodeNames);
             foreach(Factor factor in nodes)
             {
-                factor.SetNames(nodeNames);
+                factor.GetNames(nodeNames);
             }
         }
 
+        /// <summary>
+        /// Prüft ob es ein Objekt vom Typ Faktor gibt, falls ja wird eine Referenz auf dieses Objekt zurück gegeben.
+        /// </summary>
+        /// <param name="nodeName">Name des zu suchenden Objekts</param>
+        /// <returns></returns>
         public override Factor GetNodeByName(string nodeName)
         {
 

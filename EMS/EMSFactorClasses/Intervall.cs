@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Xml.Serialization;
 
 namespace EMS.EMSFactorClasses
 {
@@ -17,14 +14,17 @@ namespace EMS.EMSFactorClasses
         /// <summary>
         /// Startwert eines Intervalls.
         /// </summary>
+        [XmlAttribute("StartValue")]
         public decimal StartVal { get; set; }
         /// <summary>
         /// Endwert eines Intervalls.
         /// </summary>
+        [XmlAttribute("EndValue")] 
         public decimal EndVal { get; set; }
         /// <summary>
         /// Schrittweite eines Intervalls. 
         /// </summary>
+        [XmlAttribute("IncrementValue")]
         public decimal Increment { get; set; }
 
         /// <summary>
@@ -45,7 +45,17 @@ namespace EMS.EMSFactorClasses
 
             Composite = false;
         }
+        public Intervall(string name, decimal sv, decimal ev, decimal iv)
+        {
+            Name = name;
+            StartVal = sv;
+            EndVal = ev;
+            Increment = iv;
+            OutVal = sv.ToString();
+            tmp = sv;
 
+            Composite = false;
+        }
         /// <summary>
         /// Konstruktor der Klasse.
         /// Benötigt für Deserialisierung.

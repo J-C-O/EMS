@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,8 +17,6 @@ namespace EMS.Backend
         #region Properties
         public static FactorComplex Tree = new FactorComplex();
         public static Graph Graph = new Graph();
-
-        public static Graph TestGraph = new Graph();
 
         public static string StatusMessage = "";
         #endregion
@@ -49,7 +48,7 @@ namespace EMS.Backend
         public static void SetTreeGraph()
         {
             List<string> nodeNames = new List<string>();
-            Tree.SetNames(nodeNames);
+            Tree.GetNames(nodeNames);
 
             ResetGraph();
 
@@ -124,6 +123,64 @@ namespace EMS.Backend
         {
             return Tree.PrintNodes();
         }
+
+        public static void SetLeafValues(string leafName, string[] values)
+        {
+            //nach setzen der Werte Baum neu initialisieren!
+
+            if (Tree.GetNodeByName(leafName) is ArrayValue<string>)
+            {
+                (Tree.GetNodeByName(leafName) as ArrayValue<string>).Values = values;
+                InitializeTree();
+                StatusMessage = "Tree updated";
+            }
+        }
+        public static void SetLeafValues(string leafName, decimal sv, decimal ev, decimal iv)
+        {
+            if(Tree.GetNodeByName(leafName) is Intervall)
+            {
+                (Tree.GetNodeByName(leafName) as Intervall).StartVal = sv;
+                (Tree.GetNodeByName(leafName) as Intervall).EndVal = ev;
+                (Tree.GetNodeByName(leafName) as Intervall).Increment = iv;
+
+                InitializeTree();
+                StatusMessage = "Tree updated";
+            }
+        }
+
+        public static Hashtable GetLeafValues(string leafName)
+        {
+            Factor factor = Tree.GetNodeByName(leafName);
+            if (factor is ArrayValue<string>)
+            {
+                ArrayValue<string> arrayValue = (ArrayValue<string>)factor;
+
+                Dictionary<string, string> valueDict = new Dictionary<string, string>();
+                valueDict.Add("ActiveValue",arrayValue.OutVal);
+                //valueDict.Add("Values", arrayValue.Values);
+                for (int i = 0; i < arrayValue.Values.Length; i++)
+                {
+                    valueDict.Add("Value_" + i.ToString(), arrayValue.Values[i]);
+                }
+
+                return new Hashtable(valueDict);
+            }
+            else if (factor is Intervall)
+            {
+                Intervall intervall = (Intervall)factor;
+
+                Dictionary<string, decimal> intervallDict = new Dictionary<string, decimal>();
+                intervallDict.Add("ActiveValue", decimal.Parse(intervall.OutVal));
+
+                intervallDict.Add("StartValue", intervall.StartVal);
+                intervallDict.Add("EndValue", intervall.EndVal);
+                intervallDict.Add("Increment", intervall.Increment);
+
+                return new Hashtable(intervallDict);
+            }
+            else return null;
+
+        }
         #endregion
         
         #region Save/Load Tree
@@ -165,12 +222,16 @@ namespace EMS.Backend
         /// <param name="factorName">zu entfernender Faktorname</param>
         public static void RemoveFactor(string factorName)
         {
-            if(Tree.GetNodeByName(factorName) != null)
+            if(Tree.GetNodeByName(factorName) != null && Tree.GetNodeByName(factorName).ParentNode != null)
             {
                 Tree.GetNodeByName(Tree.GetNodeByName(factorName).ParentNode).RemoveNode(Tree.GetNodeByName(factorName));
+                Graph.RemoveNode(Graph.FindNode(factorName));
+            } else
+            {
+                StatusMessage = "You can't remove the root node, use [Reset Tree] to reset the graph.";
             }
             
-            Graph.RemoveNode(Graph.FindNode(factorName));
+            
         }
         #endregion
 

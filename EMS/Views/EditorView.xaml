@@ -33,7 +33,11 @@
         <!--<toolbox:Toolbox Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" />-->
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" >
             <Button x:Name="bttnResetGraph" Content="Reset Tree" Height="50" Click="bttnResetGraph_Click"/>
-            
+            <Label Height="15"/>
+            <Label Content="Parallel Node: Green" Background="GreenYellow"/>
+            <Label Content="Alternative Node: Blue" Background="LightSkyBlue"/>
+            <Label Content="Discrete Node: Yellow" Background="LightGoldenrodYellow"/>
+            <Label Content="Contiuous Node: Red" Background="OrangeRed"/>
         </StackPanel>
         <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
 

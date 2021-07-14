@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Xml.Serialization;
 
 namespace EMS.EMSFactorClasses
 {
@@ -14,10 +11,12 @@ namespace EMS.EMSFactorClasses
         /// <summary>
         /// Generisches Array in dem alle möglichen Werte des Faktors gespeichert werden.
         /// </summary>
+        [XmlArray("Range")]
         public T[] Values { get; set; }
         /// <summary>
         /// Index für den in OutVal genutzten Wert aus Values[ValIDX].
         /// </summary>
+        [XmlAttribute("RangePosition")]
         public int ValIDX { get; set; }
         
         /// <summary>

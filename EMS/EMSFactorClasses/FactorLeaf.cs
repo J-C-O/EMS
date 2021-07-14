@@ -16,25 +16,23 @@ namespace EMS.EMSFactorClasses
         /// </summary>
         [XmlAttribute(attributeName:"FactorValue")] //Alias für Serialisierung
         public string OutVal { get; set; }
-        /// <summary>
-        /// Schaltet zum nächsten Faktorwert
-        /// </summary>
+
 
         /// <summary>
         /// Setzt die Eigenschaft OutVal auf einen neuen Wert.
         /// </summary>
         public override void GetNext()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         /// <summary>
         /// Prüft ob es einen weiteren Faktorwert gibt.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>false</returns>
         public override bool HasNext()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace EMS.EMSFactorClasses
         /// </summary>
         public override void SetInitVal()
         {
-            throw new NotImplementedException();
+            return;
         }
 
     }

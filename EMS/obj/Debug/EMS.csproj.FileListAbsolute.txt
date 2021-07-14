@@ -62,3 +62,7 @@ C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\NewContinuous.baml
 C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\NewDiscrete.baml
 C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\NewParallel.baml
 C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\App.baml
+C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\EditValues.g.cs
+C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\EditValues.baml
+C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\EditIntervall.g.cs
+C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\Dialog\EditIntervall.baml
