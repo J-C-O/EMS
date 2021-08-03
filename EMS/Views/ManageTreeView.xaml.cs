@@ -78,7 +78,8 @@ namespace EMS.Views
         private void button_Initialize_Click(object sender, RoutedEventArgs e)
         {
             EmsMsaglLinker.InitializeTree();
-            tbOutPut.Text = EmsMsaglLinker.PrintTree();
+            //tbOutPut.Text = EmsMsaglLinker.StatusMessage;
+            tbOutPut.Text = EmsMsaglLinker.ConfOutput;
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Print_Click(object sender, RoutedEventArgs e)
         {
-            tbOutPut.Text = EmsMsaglLinker.PrintTree();
+            tbOutPut.Text += "\n" + EmsMsaglLinker.PrintTree();
         }
 
         /// <summary>
@@ -99,7 +100,8 @@ namespace EMS.Views
         private void button_Next_Click(object sender, RoutedEventArgs e)
         {
             EmsMsaglLinker.NextFactor();
-            tbOutPut.Text = EmsMsaglLinker.StatusMessage;
+            //tbOutPut.Text = EmsMsaglLinker.StatusMessage;
+            tbOutPut.Text = EmsMsaglLinker.ConfOutput;
         }
     }
 }

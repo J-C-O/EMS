@@ -28,7 +28,7 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         
-        <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" AllowDrop="True" Drop="Target_Drop"/>
+        <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" />
         
         <!--<toolbox:Toolbox Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" />-->
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" >

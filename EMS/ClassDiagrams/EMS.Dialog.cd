@@ -1,5 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="CHECK">
+    <Position X="2.792" Y="2.698" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="CHECK">
+    <Position X="5.312" Y="4.51" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="NOT USED">
+    <Position X="5.427" Y="0.927" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="CHECK">
+    <Position X="8.167" Y="3.625" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="CHECK">
+    <Position X="9.958" Y="3.125" Height="0.75" Width="1.7" />
+  </Comment>
   <Class Name="EMS.Dialog.EditIntervall" BaseTypeListCollapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -11,7 +26,7 @@
   <Class Name="EMS.Dialog.EditValues" BaseTypeListCollapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAACAAAgAAAAAAACAgCAAAAAAAAAQAAg=</HashCode>
+      <HashCode>EAAAAAAAIAAAAACAAAgAAAAAAACAgCAAAAAAAAAQAAg=</HashCode>
       <FileName>Dialog\EditValues.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -45,6 +60,14 @@
       <HashCode>CAAAAAgAIABAAAEAAAAIAAAAAAAAQAAAAAAAAAgAAQA=</HashCode>
       <FileName>Dialog\EMSEditorContextMenu.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.Dialog.NewComplexFactor">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dialog\NewComplexFactor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

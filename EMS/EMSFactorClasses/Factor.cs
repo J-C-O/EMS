@@ -92,7 +92,7 @@ namespace EMS.EMSFactorClasses
         /// <param name="factor">Objekt vom Typ Factor welches aus einer Liste entfernt werden soll.</param>
         public virtual void RemoveNode(Factor factor)
         {
-            throw new System.NotImplementedException();
+            return;
         }
 
 

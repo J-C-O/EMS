@@ -7,15 +7,39 @@ using System.Windows.Controls;
 
 namespace EMS.Dialog
 {
+    /// <summary>
+    /// Stellt ein Kontextmenü für die Editor-Ansicht zur Verfügung.
+    /// </summary>
     class EMSEditorContextMenu : ContextMenu
     {
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem AddParallel { get; set; }
+
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem AddAlternative { get; set; }
+
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem AddDiscrete { get; set; }
+
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem AddContinuous { get; set; }
 
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem RemoveNode { get; set; }
 
+        /// <summary>
+        /// Objekt vom Typ MenuItem dem ein Eventhandler für das Click-Eregnis zugewiesen werden kann.
+        /// </summary>
         public MenuItem EditValues { get; set; }
 
         /// <summary>

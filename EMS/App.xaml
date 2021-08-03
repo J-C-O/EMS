@@ -6,6 +6,6 @@
              
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <backend:EmsMsaglLinker x:Key="EMSLinker" />
+
     </Application.Resources>
 </Application>

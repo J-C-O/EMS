@@ -15,15 +15,10 @@ using System.Windows.Shapes;
 namespace EMS.Dialog
 {
     /// <summary>
-    /// Interaktionslogik für NewParallel.xaml
+    /// Interaktionslogik für NewComplexFactor.xaml
     /// </summary>
-    public partial class NewParallel : Window
+    public partial class NewComplexFactor : Window
     {
-        public NewParallel()
-        {
-            InitializeComponent();
-        }
-
         /// <summary>
         /// Eigenschaft über die man den Text der Textbox tb_nodeName erreichen kann.
         /// </summary>
@@ -42,5 +37,13 @@ namespace EMS.Dialog
         {
             DialogResult = true;
         }
+
+        public NewComplexFactor(string title)
+        {
+            InitializeComponent();
+            this.Title = title;
+        }
+
+
     }
 }

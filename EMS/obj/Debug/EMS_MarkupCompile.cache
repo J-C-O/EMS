@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Julius\source\repos\EMS\EMS\App.xaml
-15-145881256
+11-671495026
 
-42298254484
+37-1076885952
 17-785931069
-Dialog\EditIntervall.xaml;Dialog\EditValues.xaml;Dialog\NewAlternative.xaml;Dialog\NewContinuous.xaml;Dialog\NewDiscrete.xaml;Dialog\NewLeafNodeDialog.xaml;Dialog\NewNodeDialog.xaml;Dialog\NewParallel.xaml;Dialog\NewSubGraphDialog.xaml;Editor\GraphToolBox.xaml;Editor\Toolbox.xaml;MainWindow.xaml;Themes\Generic.xaml;Views\EditorView.xaml;Views\ManageTreeView.xaml;
+Dialog\EditIntervall.xaml;Dialog\EditValues.xaml;Dialog\NewAlternative.xaml;Dialog\NewComplexFactor.xaml;Dialog\NewParallel.xaml;Editor\GraphToolBox.xaml;Editor\Toolbox.xaml;MainWindow.xaml;Themes\Generic.xaml;Views\EditorView.xaml;Views\ManageTreeView.xaml;
 
-False
+True
 

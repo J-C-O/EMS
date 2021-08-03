@@ -76,6 +76,9 @@
     <Compile Include="Dialog\NewAlternative.xaml.cs">
       <DependentUpon>NewAlternative.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\NewComplexFactor.xaml.cs">
+      <DependentUpon>NewComplexFactor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\NewParallel.xaml.cs">
       <DependentUpon>NewParallel.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialog\NewAlternative.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\NewComplexFactor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,9 +186,9 @@
     </EmbeddedResource>
     <None Include="ClassDiagrams\EMS.Dialog.cd" />
     <None Include="ClassDiagrams\EMS.Views.cd" />
-    <None Include="ClassDiagrams\Entwurf.cd" />
+    <None Include="ClassDiagrams\EMS.Backend.cd" />
     <None Include="ClassDiagrams\EMS.EMSFactorClasses.cd" />
-    <None Include="ClassDiagrams\FactorNodeClasses.cd" />
+    <None Include="ClassDiagrams\EMSMSAGL.FactorNodes.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

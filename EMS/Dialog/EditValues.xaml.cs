@@ -38,12 +38,18 @@ namespace EMS.Dialog
             get { return returnList.ToArray(); }
         }
 
+        /// <summary>
+        /// Eigenschaft über die man den Text der Textbox NameHolder erreichen kann.
+        /// </summary>
         public string ResponseText
         {
             get { return NameHolder.Text; }
             set { NameHolder.Text = value; }
         }
 
+        /// <summary>
+        /// Dieses Feld entscheidet ob ein neuer Knoten angelegt wird (Name kann geändert werden) oder ein bereits vorhandener editiert wird.
+        /// </summary>
         private bool newNodeMode = false;
 
         public EditValues()
@@ -146,6 +152,9 @@ namespace EMS.Dialog
         }
     }
 
+    /// <summary>
+    /// Hilfsklasse für EditValues
+    /// </summary>
     public class StringValue
     {
         public string Value { get; set; }

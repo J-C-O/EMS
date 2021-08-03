@@ -1,18 +1,14 @@
 ﻿
-FC:\Users\Julius\source\repos\EMS\EMS\App.xaml;;
+
+FC:\Users\Julius\source\repos\EMS\EMS\Dialog\EditIntervall.xaml;;
+FC:\Users\Julius\source\repos\EMS\EMS\Dialog\EditValues.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewAlternative.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewContinuous.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewDiscrete.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewLeafNodeDialog.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewNodeDialog.xaml;;
+FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewComplexFactor.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewParallel.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\NewSubGraphDialog.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Editor\GraphToolBox.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Editor\Toolbox.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\MainWindow.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Themes\Generic.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Views\EditorView.xaml;;
 FC:\Users\Julius\source\repos\EMS\EMS\Views\ManageTreeView.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\EditValues.xaml;;
-FC:\Users\Julius\source\repos\EMS\EMS\Dialog\EditIntervall.xaml;;
 

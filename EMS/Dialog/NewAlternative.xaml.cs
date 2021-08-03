@@ -24,11 +24,15 @@ namespace EMS.Dialog
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Eigenschaft über die man den Text der Textbox tb_nodeName erreichen kann.
+        /// </summary>
         public string ResponseText
         {
             get { return tb_nodeName.Text; }
             set { tb_nodeName.Text = value; }
         }
+
 
         private void OKButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {

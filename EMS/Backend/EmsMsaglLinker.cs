@@ -12,13 +12,28 @@ using Microsoft.Msagl.Drawing;
 
 namespace EMS.Backend
 {
+    /// <summary>
+    /// Diese statische Klasse koppelt Funktionen der MSAGL-Bibliothek mit denen der Klassen im Namespace EMS.EMSFactorClasses.
+    /// </summary>
     public static class EmsMsaglLinker
     {
         #region Properties
+        /// <summary>
+        /// Objekt vom Typ FactorComplex, hier wird der Faktorbaum gespeichert.
+        /// </summary>
         public static FactorComplex Tree = new FactorComplex();
+
+        /// <summary>
+        /// Objekt vom Typ Graph, hier wird die grafische Darstellung des Faktorbaums gespeichert.
+        /// </summary>
         public static Graph Graph = new Graph();
 
+        /// <summary>
+        /// In dieser Eigenschaft werden Statusmeldungen von dieser Klasse gespeichert.
+        /// </summary>
         public static string StatusMessage = "";
+
+        //public static string ConfOutput = "";
         #endregion
 
         #region Reset-Methods
@@ -72,14 +87,11 @@ namespace EMS.Backend
             if (factor.GetType() == typeof(FactorParallel))
             {
                 AddFactor(new ParallelNode(factor.Name), factor);
-                Console.WriteLine("MATCH:   " + factor.GetType() + " | " + typeof(FactorParallel));
-
             }
             else
             if (factor.GetType() == typeof(FactorAlternative))
             {
                 AddFactor(new AlternativeNode(factor.Name), factor);
-
             }
             else
             if (factor.GetType().IsGenericType)
@@ -96,27 +108,28 @@ namespace EMS.Backend
             }
             else
             {
+                StatusMessage += "\n Unbekannter Faktor, hinzufügen nicht Möglich.";
                 return;
             }
 
         }
         #endregion
 
-        #region Manage Tree (Initialize;Next;Print)
+        #region Manage Tree (Initialize;Next;Print;Set/GetLeafValues)
         public static void InitializeTree()
         {
             Tree.SetInitVal();
-            //StatusMessage = Tree.PrintNodes();
+            ConfOutput = Tree.PrintNodes();
         }
         public static void NextFactor()
         {
             if (Tree.HasNext())
             {
                 Tree.GetNext();
-                StatusMessage += "\n" + Tree.PrintNodes();
+                ConfOutput += "\n" + Tree.PrintNodes();
             } else
             {
-                StatusMessage += "\n No new configurations";
+                ConfOutput += "\n No new configurations";
             }
         }
         public static string PrintTree()

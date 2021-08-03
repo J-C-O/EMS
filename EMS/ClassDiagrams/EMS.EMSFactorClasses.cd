@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="AddNode() aus Factor entfernen">
-    <Position X="8.146" Y="3.448" Height="0.75" Width="1.294" />
+    <Position X="9.636" Y="0.886" Height="0.75" Width="1.294" />
   </Comment>
   <Class Name="EMS.EMSFactorClasses.ArrayValue&lt;T&gt;">
     <Position X="13" Y="7.25" Width="1.5" />
