@@ -32,7 +32,7 @@ namespace EMS.EMSFactorClasses
         /// Fügt der Liste nodes ein Objekt vom Typ Factor hinzu.
         /// </summary>
         /// <param name="factor">Objekt vom Typ Factor, welches hinzugefügt werden soll.</param>
-        public override void AddNode(Factor factor)
+        public  void AddNode(Factor factor)
         {
             factor.ParentNode = this.Name;
             this.nodes.Add(factor);
@@ -48,7 +48,7 @@ namespace EMS.EMSFactorClasses
         /// </summary>
         /// <param name="parent">Elternknoten, hier wird der Knoten angehangen</param>
         /// <param name="child">Kindknoten, der an den Elternknoten angehangen wird.</param>
-        public override void AddNodeByParentName(string parent, Factor child)
+        public  void AddNodeByParentName(string parent, Factor child)
         {
             if(string.Equals(this.Name, parent))
             {
@@ -57,13 +57,13 @@ namespace EMS.EMSFactorClasses
             {
                 foreach (Factor factor in nodes)
                 {
-                    if (string.Equals(factor.Name, parent))
+                    if (string.Equals(factor.Name, parent) && factor is FactorComplex)
                     {
-                        factor.AddNode(child);
+                        (factor as FactorComplex).AddNode(child);
                     }
-                    else
+                    else if(factor is FactorComplex)
                     {
-                        factor.AddNodeByParentName(parent, child);
+                        (factor as FactorComplex).AddNodeByParentName(parent, child);
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace EMS.EMSFactorClasses
         /// Entfernt ein Objekt vom Typ Faktor aus der Liste nodes.
         /// </summary>
         /// <param name="factor">Objekt vom Typ Factor, welches entfernt werden soll.</param>
-        public override void RemoveNode(Factor factor)
+        public  void RemoveNode(Factor factor)
         {
             this.nodes.Remove(factor);
             FactorIDX = this.nodes.Count - 1;

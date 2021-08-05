@@ -39,7 +39,7 @@
             <Label Content="Discrete Node: Yellow" Background="LightGoldenrodYellow"/>
             <Label Content="Contiuous Node: Red" Background="OrangeRed"/>
         </StackPanel>
-        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+        <TextBox x:Name="statusTextBox"  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
 
     </Grid>
 </UserControl>

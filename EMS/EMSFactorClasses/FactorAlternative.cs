@@ -33,7 +33,11 @@
         public override string PrintNodes()
         {
             string result = Name + "(";
-            result += this.nodes[FactorIDX].PrintNodes();
+            if(this.nodes.Count != 0)
+            {
+                result += this.nodes[FactorIDX].PrintNodes();
+            }
+            
             return result + ")";
         }
 

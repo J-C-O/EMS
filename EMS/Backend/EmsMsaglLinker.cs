@@ -33,7 +33,10 @@ namespace EMS.Backend
         /// </summary>
         public static string StatusMessage = "";
 
-        //public static string ConfOutput = "";
+        /// <summary>
+        /// In dieser Eigenschaft wird die aktuelle Baumkonfiguration als Zeichenkette abgelegt.
+        /// </summary>
+        public static string ConfOutput = "";
         #endregion
 
         #region Reset-Methods
@@ -62,11 +65,16 @@ namespace EMS.Backend
         /// </summary>
         public static void SetTreeGraph()
         {
+            // Liste die mit den Namen aller vorhandener Faktoren im Baum befüllt wird.
             List<string> nodeNames = new List<string>();
+            // Befüllen von nodeNames
             Tree.GetNames(nodeNames);
 
+            // Zurücksetzen des Graphen
             ResetGraph();
 
+            // Für jeden Eintrag in nodeNames wird der entsprechende Faktor
+            // im Baum gesucht und der Methode AddGraphNode() übergeben.
             foreach(string name in nodeNames)
             {
                 if(Tree.GetNodeByName(name) != null)
@@ -83,7 +91,8 @@ namespace EMS.Backend
         /// <param name="factor"></param>
         private static void AddGraphNode(Factor factor)
         {
-
+            // Der Typ des übergebenen Faktors wird ausgewertet
+            // und der entsprechende Knoten wird im Graphen eingefügt.
             if (factor.GetType() == typeof(FactorParallel))
             {
                 AddFactor(new ParallelNode(factor.Name), factor);
@@ -94,7 +103,7 @@ namespace EMS.Backend
                 AddFactor(new AlternativeNode(factor.Name), factor);
             }
             else
-            if (factor.GetType().IsGenericType)
+            if (factor.GetType().IsGenericType) //weil ArrayValue generisch ist
             {
                 if (factor.GetType().GetGenericTypeDefinition() == typeof(ArrayValue<>))
                 {
@@ -116,11 +125,17 @@ namespace EMS.Backend
         #endregion
 
         #region Manage Tree (Initialize;Next;Print;Set/GetLeafValues)
+        /// <summary>
+        /// Initialisiert den Faktorbaum und setzt die Eigenschaft ConfOutput.
+        /// </summary>
         public static void InitializeTree()
         {
             Tree.SetInitVal();
             ConfOutput = Tree.PrintNodes();
         }
+        /// <summary>
+        /// Schaltet zur nächsten Baumkonfiguration.
+        /// </summary>
         public static void NextFactor()
         {
             if (Tree.HasNext())
@@ -132,11 +147,19 @@ namespace EMS.Backend
                 ConfOutput += "\n No new configurations";
             }
         }
+        /// <summary>
+        /// Gibt die aktuelle Baumkonfiguration als Zeichenkette zurück.
+        /// </summary>
+        /// <returns></returns>
         public static string PrintTree()
         {
             return Tree.PrintNodes();
         }
-
+        /// <summary>
+        /// Setzt die Werte für bestehende Blätter im Baum.
+        /// </summary>
+        /// <param name="leafName"></param>
+        /// <param name="values"></param>
         public static void SetLeafValues(string leafName, string[] values)
         {
             //nach setzen der Werte Baum neu initialisieren!
@@ -160,7 +183,12 @@ namespace EMS.Backend
                 StatusMessage = "Tree updated";
             }
         }
-
+        /// <summary>
+        /// Prüft ob der gesuchte Faktor ein Blatt ist 
+        /// und liefert eine Hashtable mit dem Namen, dem Wertebereich und dem aktuell gesetzten Wert zurück.
+        /// </summary>
+        /// <param name="leafName"></param>
+        /// <returns>Hashtable mit Wertebereich, aktiver Wert und Name</returns>
         public static Hashtable GetLeafValues(string leafName)
         {
             Factor factor = Tree.GetNodeByName(leafName);
@@ -170,7 +198,7 @@ namespace EMS.Backend
 
                 Dictionary<string, string> valueDict = new Dictionary<string, string>();
                 valueDict.Add("ActiveValue",arrayValue.OutVal);
-                //valueDict.Add("Values", arrayValue.Values);
+                
                 for (int i = 0; i < arrayValue.Values.Length; i++)
                 {
                     valueDict.Add("Value_" + i.ToString(), arrayValue.Values[i]);
@@ -206,9 +234,19 @@ namespace EMS.Backend
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Factor));
             TextWriter writer = new StreamWriter(configPath);
 
-            xmlSerializer.Serialize(writer, Tree);
-            writer.Close();
-            StatusMessage += "\nKonfiguration gespeichert";
+            
+
+            try
+            {
+                xmlSerializer.Serialize(writer, Tree);
+                writer.Close();
+                StatusMessage += "\nKonfiguration gespeichert";
+            }
+            catch (InvalidOperationException e)
+            {
+
+                StatusMessage += "\nKonfiguration konnte nicht gespeichert werden:\n" + e.Message;
+            }
         }
 
         /// <summary>
@@ -220,9 +258,15 @@ namespace EMS.Backend
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Factor));
             TextReader reader = new StreamReader(configPath);
 
-            Tree = (FactorComplex)xmlSerializer.Deserialize(reader);
-            reader.Close();
-            StatusMessage += "\nKonfiguration eingelesen";
+            try {
+                Tree = (FactorComplex)xmlSerializer.Deserialize(reader);
+                reader.Close();
+                StatusMessage += "\nKonfiguration eingelesen";
+            } catch (InvalidOperationException e)
+            {
+                StatusMessage += "\nKonfiguration konnte nicht eingelesen werden:\n" + e.Message;
+            }
+            
 
             //InitializeTree();
         }
@@ -237,8 +281,9 @@ namespace EMS.Backend
         {
             if(Tree.GetNodeByName(factorName) != null && Tree.GetNodeByName(factorName).ParentNode != null)
             {
-                Tree.GetNodeByName(Tree.GetNodeByName(factorName).ParentNode).RemoveNode(Tree.GetNodeByName(factorName));
+                (Tree.GetNodeByName(Tree.GetNodeByName(factorName).ParentNode) as FactorComplex).RemoveNode(Tree.GetNodeByName(factorName));
                 Graph.RemoveNode(Graph.FindNode(factorName));
+                SetTreeGraph(); // Graph wird neu erzeugt, damit "lose" Enden ebenfalls entfernt werden.
             } else
             {
                 StatusMessage = "You can't remove the root node, use [Reset Tree] to reset the graph.";

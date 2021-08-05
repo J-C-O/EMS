@@ -127,7 +127,8 @@ namespace EMS.Dialog
         /// <param name="e"></param>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            if ((newNodeMode && ResponseText != null ) || (!newNodeMode))
+            string nullString = "";
+            if ((newNodeMode && ResponseText != nullString && !ArrayValues.Items.IsEmpty) || (!newNodeMode && !ArrayValues.Items.IsEmpty))
             {
                 foreach (StringValue item in ArrayValues.Items)
                 {

@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="EMS.Views.ManageTreeView">
-    <Position X="10.25" Y="1.25" Width="1.75" />
+    <Position X="8" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAEAQAAMAAAAAAAABAQAAAA=</HashCode>
       <FileName>Views\ManageTreeView.xaml.cs</FileName>

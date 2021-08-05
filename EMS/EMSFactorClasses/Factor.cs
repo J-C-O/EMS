@@ -43,16 +43,16 @@ namespace EMS.EMSFactorClasses
         /// Fügt ein Objekt vom Typ Factor einer Liste hinzu. 
         /// </summary>
         /// <param name="factor">Objekt vom Typ Factor welches einer Liste angehangen werden soll.</param>
-        public virtual void AddNode(Factor factor)
-        {
-            return;
-        }
+        //public virtual void AddNode(Factor factor)
+        //{
+        //    return;
+        //}
 
 
-        public virtual void AddNodeByParentName(string parent, Factor child)
-        {
-            return;
-        }
+        //public virtual void AddNodeByParentName(string parent, Factor child)
+        //{
+        //    return;
+        //}
 
         /// <summary>
         /// Gibt true zurück, wenn der Name des aufrufenden Knotens mit dem gesuchten übereinstimmt.
@@ -90,10 +90,10 @@ namespace EMS.EMSFactorClasses
         /// Entfernt ein Objekt vom Typ Faktor aus einer Liste.
         /// </summary>
         /// <param name="factor">Objekt vom Typ Factor welches aus einer Liste entfernt werden soll.</param>
-        public virtual void RemoveNode(Factor factor)
-        {
-            return;
-        }
+        //public virtual void RemoveNode(Factor factor)
+        //{
+        //    return;
+        //}
 
 
         /// <summary>

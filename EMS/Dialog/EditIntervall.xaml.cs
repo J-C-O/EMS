@@ -20,7 +20,8 @@ namespace EMS.Dialog
     /// </summary>
     public partial class EditIntervall : Window
     {
-        private static readonly Regex _regex = new Regex("[^-0-9.]+");
+        private static readonly Regex _regex = new Regex("[^-0-9,]+");
+        //private static readonly Regex _regex = new Regex(@"^(-?[1-9]+\d*([.]\d+)?)$|^(-?0[.]\d*[1-9]+)$|^0$|^0.0$");
 
         /// <summary>
         /// Eigenschaft für den Startwert.
@@ -96,6 +97,7 @@ namespace EMS.Dialog
         {
             return !_regex.IsMatch(text);
         }
+
         /// <summary>
         /// Eventhandler für Texteingabe.
         /// </summary>
@@ -113,14 +115,28 @@ namespace EMS.Dialog
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if((newNodeMode && ResponseText != null && tb_SV.Text != null && tb_EV.Text != null && tb_IV.Text != null) || 
-                (!newNodeMode && tb_SV.Text != null && tb_EV.Text != null && tb_IV.Text != null))
+            string nullString = "";
+            if((newNodeMode && ResponseText != nullString
+                && tb_SV.Text != nullString
+                && tb_EV.Text != nullString
+                && tb_IV.Text != nullString) 
+                || 
+                (!newNodeMode && tb_SV.Text != nullString && tb_EV.Text != nullString && tb_IV.Text != nullString)
+            )
             {
-                StartValue = decimal.Parse(tb_SV.Text);
-                EndValue = decimal.Parse(tb_EV.Text);
-                Increment = decimal.Parse(tb_IV.Text);
+                try
+                {
+                    StartValue = decimal.Parse(tb_SV.Text);
+                    EndValue = decimal.Parse(tb_EV.Text);
+                    Increment = decimal.Parse(tb_IV.Text);
 
-                DialogResult = true;
+                    DialogResult = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
         }
     }

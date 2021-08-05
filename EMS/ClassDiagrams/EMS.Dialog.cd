@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="CHECK">
-    <Position X="2.792" Y="2.698" Height="0.75" Width="1.7" />
+    <Position X="1.313" Y="1.396" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="CHECK">
-    <Position X="5.312" Y="4.51" Height="0.75" Width="1.7" />
+    <Position X="3.031" Y="4.541" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="NOT USED">
     <Position X="5.427" Y="0.927" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="CHECK">
-    <Position X="8.167" Y="3.625" Height="0.75" Width="1.7" />
+    <Position X="9.24" Y="5" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="CHECK">
-    <Position X="9.958" Y="3.125" Height="0.75" Width="1.7" />
+    <Position X="11.479" Y="3.833" Height="0.75" Width="1.7" />
   </Comment>
   <Class Name="EMS.Dialog.EditIntervall" BaseTypeListCollapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />

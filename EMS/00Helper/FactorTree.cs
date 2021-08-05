@@ -10,7 +10,7 @@ namespace EMS._00Helper
 {
     public class FactorTree
     {
-        public Factor Tree { get; set; }
+        public FactorParallel Tree { get; set; }
 
         public FactorTree()
         {

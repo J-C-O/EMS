@@ -12,15 +12,15 @@
         <DockPanel Height="25" Margin="0,64,0,134" >
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Start Value: " Margin="2"/>
-                <TextBox x:Name="tb_SV" Width="100"  Margin="2"/>
+                <TextBox x:Name="tb_SV" Width="100"  Margin="2" PreviewTextInput="PreviewTextInputHandler"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="End Value: " Margin="2"/>
-                <TextBox x:Name="tb_EV" Width="100" Margin="2"/>
+                <TextBox x:Name="tb_EV" Width="100" Margin="2" PreviewTextInput="PreviewTextInputHandler"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Increment: " Margin="2"/>
-                <TextBox x:Name="tb_IV" Width="100" Margin="2"/>
+                <TextBox x:Name="tb_IV" Width="100" Margin="2" PreviewTextInput="PreviewTextInputHandler"/>
             </StackPanel>
 
             <Button Content="OK" Click="Button_Click" Width="100"/>

@@ -35,7 +35,11 @@ namespace EMS.Dialog
         /// <param name="e"></param>
         private void OKButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            DialogResult = true;
+            if(ResponseText != "")
+            {
+                DialogResult = true;
+            }
+            
         }
 
         public NewComplexFactor(string title)

@@ -14,7 +14,7 @@ namespace EMSFactorClient
         /// <summary>
         /// Objekt vom Typ Factor.
         /// </summary>
-        Factor tree = new FactorComplex();
+        FactorParallel tree = new FactorParallel();
         /// <summary>
         /// Objekt vom Typ TextBlock für GUI-Kompatibilität.
         /// </summary>
@@ -102,7 +102,7 @@ namespace EMSFactorClient
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Factor));
             TextReader reader = new StreamReader(configPath);
 
-            tree = (Factor)xmlSerializer.Deserialize(reader);
+            tree = (FactorParallel)xmlSerializer.Deserialize(reader);
             reader.Close();
             StateBox.Text += "\nKonfiguration eingelesen";
         }
@@ -116,7 +116,7 @@ namespace EMSFactorClient
         {
             if (rootNode.IsComposite())
             {
-                rootNode.AddNode(nextNode);
+                (rootNode as FactorComplex).AddNode(nextNode);
             }
         }
 

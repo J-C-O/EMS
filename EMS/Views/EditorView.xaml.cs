@@ -114,6 +114,7 @@ namespace EMS.Views
                 EMSEditorContextMenu editorCMenu = new EMSEditorContextMenu();
                 editorCMenu.PlacementTarget = sender as DockPanel;
 
+                // Hier werden Delegates verwendet, da die Eventhandler mehr Variablen als _sender und _e benötigen.
                 editorCMenu.AddParallel.Click += delegate (object _sender, RoutedEventArgs _e) { AddComplex_Click(_sender, _e, true); };
                 editorCMenu.AddAlternative.Click += delegate (object _sender, RoutedEventArgs _e) { AddComplex_Click(_sender, _e, false); };
 
