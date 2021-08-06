@@ -26,7 +26,7 @@
             <Button Content="OK" Click="Button_Click" Width="100"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="CurrentValue: " Margin="2"/>
+                <TextBlock Text="Active Value: " Margin="2"/>
                 <TextBlock x:Name="tb_CV" Width="100" Margin="2"/>
             </StackPanel>
         </DockPanel>
