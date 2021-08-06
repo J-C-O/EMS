@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using EMSFactorClient;
 using Microsoft.Win32;
 using EMS.Backend;
 

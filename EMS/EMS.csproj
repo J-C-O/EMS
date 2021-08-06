@@ -64,7 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="00Helper\FactorTree.cs" />
     <Compile Include="Backend\EmsMsaglLinker.cs" />
     <Compile Include="Dialog\EditIntervall.xaml.cs">
       <DependentUpon>EditIntervall.xaml</DependentUpon>
@@ -73,20 +72,8 @@
       <DependentUpon>EditValues.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialog\EMSEditorContextMenu.cs" />
-    <Compile Include="Dialog\NewAlternative.xaml.cs">
-      <DependentUpon>NewAlternative.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialog\NewComplexFactor.xaml.cs">
       <DependentUpon>NewComplexFactor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\NewParallel.xaml.cs">
-      <DependentUpon>NewParallel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Editor\GraphToolBox.xaml.cs">
-      <DependentUpon>GraphToolBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Editor\Toolbox.xaml.cs">
-      <DependentUpon>Toolbox.xaml</DependentUpon>
     </Compile>
     <Compile Include="EMSMSAGL\FactorNodes\AlternativeNode.cs" />
     <Compile Include="EMSMSAGL\FactorNodes\CompositeNode.cs" />
@@ -111,25 +98,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialog\NewAlternative.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialog\NewComplexFactor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\NewParallel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Editor\GraphToolBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Editor\Toolbox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -140,7 +111,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="EMSFactorClasses\ArrayValue.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="EMSFactorClasses\Factor.cs" />
     <Compile Include="EMSFactorClasses\FactorAlternative.cs" />
     <Compile Include="EMSFactorClasses\FactorComplex.cs" />
@@ -153,10 +123,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\EditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,11 +165,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dialog\EMSMenu\" />
     <Folder Include="Models\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TODO.txt" />
+    <Resource Include="FAKTORBAUMSAMPLE\FAKTORBAUM.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

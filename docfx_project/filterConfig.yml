@@ -1,0 +1,4 @@
+- include:
+  uidRegex: ^EMS\.ViewModels
+  uidRegex: ^EMS\.EMSMSAGL\.FactorNodes
+  uidRegex: ^Microsoft\.Msagl\.WpfGraphControl

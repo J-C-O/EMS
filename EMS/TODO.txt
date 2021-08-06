@@ -1,2 +1,0 @@
-﻿Intervall fixen
-Werte anzeigen und editierbar machen

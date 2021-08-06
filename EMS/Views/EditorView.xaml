@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EMS.Views"
-      xmlns:toolbox="clr-namespace:EMS.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
@@ -30,7 +29,6 @@
         
         <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" />
         
-        <!--<toolbox:Toolbox Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" />-->
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" >
             <Button x:Name="bttnResetGraph" Content="Reset Tree" Height="50" Click="bttnResetGraph_Click"/>
             <Label Height="15"/>

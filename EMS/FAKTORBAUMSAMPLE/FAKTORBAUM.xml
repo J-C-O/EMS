@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Factor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="FactorAlternative" Active="true" FactorName="Experiment" Complex="true">
+  <Sub-Factors>
+    <Factor xsi:type="FactorParallel" Active="true" FactorName="Production" Complex="true" FactorGroup="Experiment">
+      <Sub-Factors>
+        <Factor xsi:type="FactorParallel" Active="true" FactorName="ProductionParameter" Complex="true" FactorGroup="Production">
+          <Sub-Factors>
+            <Factor xsi:type="Intervall" Active="true" FactorName="Zwischenankunftszeiten" Complex="false" FactorGroup="ProductionParameter" FactorValue="0,2" StartValue="0.2" EndValue="0.4" IncrementValue="0.005" />
+            <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="Liefertermin" Complex="false" FactorGroup="ProductionParameter" FactorValue="3*DLZ" RangePosition="0">
+              <Range>
+                <string>3*DLZ</string>
+                <string>4*DLZ</string>
+                <string>5*DLZ</string>
+              </Range>
+            </Factor>
+            <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="Runtime" Complex="false" FactorGroup="ProductionParameter" FactorValue="200000" RangePosition="0">
+              <Range>
+                <string>200000</string>
+              </Range>
+            </Factor>
+            <Factor xsi:type="Intervall" Active="true" FactorName="Arbeitsgangzeit" Complex="false" FactorGroup="ProductionParameter" FactorValue="0" StartValue="0" EndValue="0.4" IncrementValue="0.1" />
+          </Sub-Factors>
+          <FactorIDX>3</FactorIDX>
+        </Factor>
+        <Factor xsi:type="FactorAlternative" Active="true" FactorName="Environment" Complex="true" FactorGroup="Production">
+          <Sub-Factors>
+            <Factor xsi:type="FactorParallel" Active="true" FactorName="Zentral" Complex="true" FactorGroup="Environment">
+              <Sub-Factors>
+                <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="Losgröße" Complex="false" FactorGroup="Zentral" FactorValue="1" RangePosition="0">
+                  <Range>
+                    <string>1</string>
+                    <string>5</string>
+                    <string>10</string>
+                  </Range>
+                </Factor>
+                <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="Planungsintervall" Complex="false" FactorGroup="Zentral" FactorValue="8" RangePosition="0">
+                  <Range>
+                    <string>8</string>
+                    <string>24</string>
+                  </Range>
+                </Factor>
+                <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="Planungsscope" Complex="false" FactorGroup="Zentral" FactorValue="16" RangePosition="0">
+                  <Range>
+                    <string>16</string>
+                    <string>24</string>
+                    <string>28</string>
+                    <string>32</string>
+                  </Range>
+                </Factor>
+              </Sub-Factors>
+              <FactorIDX>2</FactorIDX>
+            </Factor>
+            <Factor xsi:type="FactorAlternative" Active="true" FactorName="Dezentral" Complex="true" FactorGroup="Environment">
+              <Sub-Factors>
+                <Factor xsi:type="ArrayValueOfString" Active="true" FactorName="PrioRule" Complex="false" FactorGroup="Dezentral" FactorValue="Schlupf" RangePosition="0">
+                  <Range>
+                    <string>Schlupf</string>
+                    <string>FiFo</string>
+                    <string>KoZ</string>
+                  </Range>
+                </Factor>
+              </Sub-Factors>
+              <FactorIDX>0</FactorIDX>
+            </Factor>
+          </Sub-Factors>
+          <FactorIDX>1</FactorIDX>
+        </Factor>
+      </Sub-Factors>
+      <FactorIDX>1</FactorIDX>
+    </Factor>
+  </Sub-Factors>
+  <FactorIDX>0</FactorIDX>
+</Factor>

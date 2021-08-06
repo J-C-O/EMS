@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Julius\source\repos\EMS\EMS\obj\Debug\
+C:\Users\Julius\source\repos\EMS2.0\EMS\obj\Debug\
 EMS
 none
 false
 DEBUG;TRACE
-C:\Users\Julius\source\repos\EMS\EMS\App.xaml
-11-671495026
+C:\Users\Julius\source\repos\EMS2.0\EMS\App.xaml
+6-1030505083
 
-37-1076885952
-17-785931069
-Dialog\EditIntervall.xaml;Dialog\EditValues.xaml;Dialog\NewAlternative.xaml;Dialog\NewComplexFactor.xaml;Dialog\NewParallel.xaml;Editor\GraphToolBox.xaml;Editor\Toolbox.xaml;MainWindow.xaml;Themes\Generic.xaml;Views\EditorView.xaml;Views\ManageTreeView.xaml;
+31-1761476124
+17279680656
+Dialog\EditIntervall.xaml;Dialog\EditValues.xaml;Dialog\NewComplexFactor.xaml;MainWindow.xaml;Views\EditorView.xaml;Views\ManageTreeView.xaml;
 
 False
 
