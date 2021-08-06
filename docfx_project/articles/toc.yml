@@ -1,6 +1,7 @@
 - name: Einleitung
   href: intro.md
-- name: Anleitung
-  href: anleitung.md
-- name: XML-Format eines Faktorbaums
-  href: xmlInfo.md
+- name: Faktorbaum anlegen
+  href: editTree.md
+- name: Faktorbaum verwalten
+  href: manageTree.md  
+

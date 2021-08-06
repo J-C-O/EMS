@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EMS.Dialog"
         mc:Ignorable="d"
-        Title="NewContinuous" Height="450" Width="800">
+        Title="NewContinuous" Height="280" Width="250">
     <Grid>
-        
+        <StackPanel>
+            <TextBlock Text="Node name:" />
+            <Label />
+            <TextBox x:Name="tb_nodeName" Width="250" HorizontalAlignment="Left"/>
+            <Label/>
+            <TextBlock Text="Start value:" />
+            <Label />
+            <TextBox x:Name="tb_startValue" Width="250" HorizontalAlignment="Left" PreviewTextInput="PreviewTextInputHandler"/>
+            <Label />
+            <TextBlock Text="End value:"/>
+            <Label />
+            <TextBox x:Name="tb_endValue" Width="250" HorizontalAlignment="Left" PreviewTextInput="PreviewTextInputHandler"/>
+            <Label />
+            <TextBlock Text="Increment:"/>
+            <Label />
+            <TextBox x:Name="tb_increment" Width="250" HorizontalAlignment="Left" PreviewTextInput="PreviewTextInputHandler"/>
+            <Label />
+            <Button Content="OK" Click="OKButton_Click" />
+        </StackPanel>
     </Grid>
 </Window>

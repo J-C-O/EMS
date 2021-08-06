@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="EMS.EMSMSAGL.FactorNodes.AlternativeNode" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\AlternativeNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.CompositeNode" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\CompositeNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.ContinuousNode" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\ContinuousNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.DiscreteNode" Collapsed="true">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\DiscreteNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.FactorNode" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\FactorNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.LeafNode" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\LeafNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSMSAGL.FactorNodes.ParallelNode" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSMSAGL\FactorNodes\ParallelNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

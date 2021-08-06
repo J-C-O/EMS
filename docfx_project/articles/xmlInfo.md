@@ -3,52 +3,7 @@
 Jede Experimentkonfiguration wird in einem serialisierbaren XML-Format gespeichert. Für Experimente sind die ``<Factor>`` Elemente mit ihren Attributen ``FactorName`` und ``FactorValue`` sowie ``IsActive`` relevant. Andere Elemente und Attribute dienen der EMS zum erzeugen des genauen Zustandes eines Faktorobjektes. 
 Auf dieser Seite finden Sie eine Beispielkonfiguration die eingelesen werden kann, sowie die Schemadefinition der serialisierbaren XML-Dateien.
 ## 1 Beispiel Konfiguration eines Faktorbaums im XML Format
-`<?xml version="1.0" encoding="utf-8"?>
-<Factor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="FactorParallel" IsActive="true" FactorName="Experiment">
-  <Sub-Factors>
-    <Factor xsi:type="FactorParallel" IsActive="true" FactorName="ProductionParameter">
-      <Sub-Factors>
-        <Factor xsi:type="Intervall" IsActive="true" FactorName="Zwischenankunftszeit" FactorValue="0,2">
-          <StartVal>0.2</StartVal>
-          <EndVal>0.4</EndVal>
-          <Increment>0.05</Increment>
-        </Factor>
-      </Sub-Factors>
-      <FactorIDX>0</FactorIDX>
-    </Factor>
-    <Factor xsi:type="FactorAlternative" IsActive="true" FactorName="Environment">
-      <Sub-Factors>
-        <Factor xsi:type="FactorParallel" IsActive="false" FactorName="Zentral">
-          <Sub-Factors>
-            <Factor xsi:type="ArrayValueOfInt32" IsActive="false" FactorName="Planungsintervall" FactorValue="4">
-              <Values>
-                <int>4</int>
-                <int>8</int>
-              </Values>
-              <ValIDX>0</ValIDX>
-            </Factor>
-          </Sub-Factors>
-          <FactorIDX>0</FactorIDX>
-        </Factor>
-        <Factor xsi:type="FactorParallel" IsActive="true" FactorName="Dezentral">
-          <Sub-Factors>
-            <Factor xsi:type="ArrayValueOfString" IsActive="true" FactorName="PrioRule" FactorValue="Koz">
-              <Values>
-                <string>Koz</string>
-                <string>FiFo</string>
-                <string>Schlupf</string>
-              </Values>
-              <ValIDX>0</ValIDX>
-            </Factor>
-          </Sub-Factors>
-          <FactorIDX>0</FactorIDX>
-        </Factor>
-      </Sub-Factors>
-      <FactorIDX>1</FactorIDX>
-    </Factor>
-  </Sub-Factors>
-  <FactorIDX>1</FactorIDX>
-</Factor>`
+``
 
 ## 2 Schemadefinition
 

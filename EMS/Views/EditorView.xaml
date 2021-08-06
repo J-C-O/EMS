@@ -4,11 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EMS.Views"
-      xmlns:toolbox="clr-namespace:EMS.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
+    <UserControl.Resources>
+        <ContextMenu x:Key="graphContextMenu">
 
+        </ContextMenu>
+    </UserControl.Resources>
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="119*"/>
@@ -24,11 +27,17 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         
-        <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" AllowDrop="True" Drop="Target_Drop"/>
+        <DockPanel Background="AntiqueWhite" x:Name="targetBox" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" />
         
-        <toolbox:Toolbox Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" />
-        
-        <TextBox x:Name="statusTextBox" Text="{Binding Status}" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" >
+            <Button x:Name="bttnResetGraph" Content="Reset Tree" Height="50" Click="bttnResetGraph_Click"/>
+            <Label Height="15"/>
+            <Label Content="Parallel Node: Green" Background="GreenYellow"/>
+            <Label Content="Alternative Node: Blue" Background="LightSkyBlue"/>
+            <Label Content="Discrete Node: Yellow" Background="LightGoldenrodYellow"/>
+            <Label Content="Contiuous Node: Red" Background="OrangeRed"/>
+        </StackPanel>
+        <TextBox x:Name="statusTextBox"  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Height="25" VerticalAlignment="Bottom" Background="LightGray" />
 
     </Grid>
 </UserControl>

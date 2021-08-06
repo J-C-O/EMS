@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EMS.EMSFactorClasses.ArrayValue&lt;T&gt;">
+    <Position X="13" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAQIAIAAAAgAEAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\ArrayValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.Factor">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQABAAABAEBAAAAYAAQCUAAIACAAAAAAQAIA=</HashCode>
+      <FileName>EMSFactorClasses\Factor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorAlternative">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAIAAAAAACIAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\FactorAlternative.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorComplex">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQABAAAFAAAQAAAIAAAAUACIACAAAAAAIIAg=</HashCode>
+      <FileName>EMSFactorClasses\FactorComplex.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorContinuous">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\FactorContinuous.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorDiscrete">
+    <Position X="12.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\FactorDiscrete.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorLeaf">
+    <Position X="11.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAIAAAAAAAIAAACQAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\FactorLeaf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.FactorParallel">
+    <Position X="2.25" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\FactorParallel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EMS.EMSFactorClasses.Intervall">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQAAAACAAAAAIAAAAAIAAAAQAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>EMSFactorClasses\Intervall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

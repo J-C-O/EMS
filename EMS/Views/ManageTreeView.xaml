@@ -15,15 +15,27 @@
                 <TextBlock x:Name="tb_Save" Width="450"></TextBlock>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="Configure tree" HorizontalAlignment="Left" Height="276" Margin="26,121,0,0" VerticalAlignment="Top" Width="986">
+        <GroupBox Header="Configure tree" HorizontalAlignment="Left" Height="276" Margin="26,121,0,0" VerticalAlignment="Top" Width="750">
             <WrapPanel>
-                <Button Width="50" x:Name="button_Initialize" Content="Initialize" Click="button_Initialize_Click"></Button>
-                <Button Width="50" x:Name="button_Print" Content="Print" Click="button_Print_Click"></Button>
-                <Button Width="50" x:Name="button_Next" Content="Next" Click="button_Next_Click"></Button>
-                <ScrollViewer VerticalContentAlignment="Bottom" Height="250" Width="968" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <TextBlock x:Name="tbOutPut" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Configurations:" VerticalAlignment="Top" Height="Auto" Width="Auto" Grid.ColumnSpan="2"/>
+                <WrapPanel>
+                    <Button Width="50" x:Name="button_Initialize" Content="Initialize" Click="button_Initialize_Click"></Button>
+                    <Button Width="50" x:Name="button_Print" Content="Print" Click="button_Print_Click"></Button>
+                    <Button Width="50" x:Name="button_Next" Content="Next" Click="button_Next_Click"></Button>
+                </WrapPanel>
+                <Label Width="900"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <WrapPanel>
+
+
+
+                        <TextBox IsEnabled="True" HorizontalScrollBarVisibility="Visible" x:Name="tbOutPut" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Configurations:" VerticalAlignment="Top" Height="Auto" Width="700" Grid.ColumnSpan="2"/>
+
+
+                    </WrapPanel>
                 </ScrollViewer>
             </WrapPanel>
+
+
         </GroupBox>
 
     </Grid>

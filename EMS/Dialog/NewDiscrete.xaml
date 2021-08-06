@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EMS.Dialog"
         mc:Ignorable="d"
-        Title="NewDiscrete" Height="450" Width="800">
+        Title="NewDiscrete" Height="255" Width="300">
     <Grid>
-        
+        <StackPanel>
+            <TextBlock Text="Node name:" />
+            <Label />
+            <TextBox x:Name="tb_nodeName" Width="250" HorizontalAlignment="Left"/>
+            <Label/>
+            <TextBlock Text="Value = " />
+            <Label />
+            <TextBox x:Name="tb_value" Width="250" HorizontalAlignment="Left" />
+            <Label />
+            <TextBlock Text="Added Values: " x:Name="tb_Output" />
+            <Label />
+            <Button Content="Add Value" Click="AddButton_Click" />
+            <Label />
+            <Button Content="Print Values" Click="PrintButton_Click" />
+            <Label />
+            <Button Content="OK" Click="OKButton_Click" />
+        </StackPanel>
     </Grid>
 </Window>

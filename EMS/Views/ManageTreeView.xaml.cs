@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using EMSFactorClient;
 using Microsoft.Win32;
+using EMS.Backend;
 
 namespace EMS.Views
 {
@@ -11,10 +11,6 @@ namespace EMS.Views
     /// </summary>
     public partial class ManageTreeView : UserControl
     {
-        /// <summary>
-        /// Objekt vom Typ Client um mit einem Faktorbaum arbeiten zu können.
-        /// </summary>
-        Client client;
         /// <summary>
         /// Objekt vom Typ OpenFileDialog zum Laden von XML-Konfigurationen.
         /// </summary>
@@ -26,9 +22,6 @@ namespace EMS.Views
         public ManageTreeView()
         {
             InitializeComponent();
-
-            //Client-Instanz mit übergebenem TextBlock zur Ausgabe
-            client = new Client(tbOutPut);
 
             //Setzen des Initialverzeichniss und des Dateifilters
             openFile.InitialDirectory = "c:\\";
@@ -54,7 +47,8 @@ namespace EMS.Views
                 loadPath = openFile.FileName;
 
                 tb_Load.Text = loadPath;
-                client.LoadConfig(loadPath);
+                EmsMsaglLinker.LoadTreeConfig(loadPath);
+                tbOutPut.Text = EmsMsaglLinker.StatusMessage;
             }
         }
 
@@ -71,7 +65,8 @@ namespace EMS.Views
 
             savePath = saveFile.FileName;
             tb_Save.Text = savePath;
-            client.WriteConfig(savePath);
+            EmsMsaglLinker.SaveTreeConfig(savePath);
+            tbOutPut.Text = EmsMsaglLinker.StatusMessage;
         }
 
         /// <summary>
@@ -81,7 +76,9 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Initialize_Click(object sender, RoutedEventArgs e)
         {
-            client.Initialize();
+            EmsMsaglLinker.InitializeTree();
+            //tbOutPut.Text = EmsMsaglLinker.StatusMessage;
+            tbOutPut.Text = EmsMsaglLinker.ConfOutput;
         }
 
         /// <summary>
@@ -91,7 +88,7 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Print_Click(object sender, RoutedEventArgs e)
         {
-            client.PrintTreeGUI();
+            tbOutPut.Text += "\n" + EmsMsaglLinker.PrintTree();
         }
 
         /// <summary>
@@ -101,7 +98,9 @@ namespace EMS.Views
         /// <param name="e"></param>
         private void button_Next_Click(object sender, RoutedEventArgs e)
         {
-            client.Next();
+            EmsMsaglLinker.NextFactor();
+            //tbOutPut.Text = EmsMsaglLinker.StatusMessage;
+            tbOutPut.Text = EmsMsaglLinker.ConfOutput;
         }
     }
 }
