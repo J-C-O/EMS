@@ -6,11 +6,10 @@
           "files": [
             "**/*.csproj"
           ],
-          "src": "C:\\Users\\Julius\\source\\repos\\EMS2.0\\EMS"
+          "src": "<ANPASSEN>\\EMS2.0\\EMS"
         }
       ],
       "dest": "api",
-      "filter": "filterConfig.yml",
       "disableGitFeatures": false
     }
   ],
@@ -66,6 +65,7 @@
     "content": [
       {
         "files": [
+          "api/index.md",
           "api/**.yml",
           "api-vb/**.yml"
         ],
